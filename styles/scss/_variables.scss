@@ -1,0 +1,102 @@
+//GLOBALES
+
+$font: 'Chakra Petch', sans-serif;
+
+//gray button
+$gray-button-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+$gray-button-border: 1px solid #808080;
+$hover-border: 1px solid #110038;
+
+//ventana
+$ventana-color-font: #FFFFFF;
+
+//separador gifs
+$separador-background: #FFFAFE;
+$separador-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D;
+
+//capturando-button
+$capturando-background: #FF6161;
+$capturando-shadow: inset -1px -1px 0 0 #993A3A, inset 1px 1px 0 0 #FFFFFF;
+$capturando-border: 1px solid #110038;
+
+
+
+//SAILOR DAY (THEME)----------------------------------------------------
+//<body> 
+$background-day: #FFF4FD;
+
+//nav buttons
+$primary-button-day: #F7C9F3;
+$primary-font-day: #110038;
+$primary-button-border-day: 1px solid #110038;
+$primary-button-shadow-day: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+$primary-button-hover-day: #E6BBE2;
+
+//elegir tema
+$elegirtema-button-selected-day: $background-day;
+$elegirtema-button-selected-shadow-day: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+$elegirtema-button-selected-border-day: 1px solid #CCA6C9;
+
+//gray button
+$gray-button-day: #F0F0F0;
+
+//ventana
+$gradient-day: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
+$ventana-background-day: #E6E6E6;
+$ventana-boxshadow-day:  inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+
+//separador gifs
+$separador-border-day:  1px solid #E6BBE2;
+
+//vermas-button
+$vermas-button-background-day: #4180F6;
+$vermas-button-border-day: 1px solid #4C2F99;;
+$vermas-button-shadow-day: inset -2px -2px 0 0 #284F99, inset 2px 2px 0 0 #FFFFFF;
+$vermas-button-hover-day: #3A72DB;
+
+//secondary-button
+$secondary-button-background-day: $background-day;
+$secondary-button-border-day: $primary-button-border-day;
+$secondary-button-shadow-day: $primary-button-shadow-day;
+   
+
+
+//SAILOR NIGHT (THEME)--------------------------------------------------
+//<body>
+$background-night: #110038;
+
+//nav buttons
+$primary-button-night: #A72CB3;
+$primary-font-night: #FFFFFF; 
+$primary-button-border-night:  1px solid #110038;
+$primary-button-shadow-night: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;;
+$primary-button-hover-night: #CE36DB;
+
+//elegir tema
+$elegirtema-button-selected-night: #2E32FB;
+$elegirtema-button-selected-shadow-night: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+$elegirtema-button-selected-border-night: 1px solid rgba(51,53,143,0.20);
+
+//gray button
+$gray-button-night: #CCCCCC ;
+
+
+//ventana
+$gradient-night: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
+$ventana-background-night: #B4B4B4;
+$ventana-boxshadow-night: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
+
+
+//separador gifs
+$separador-border-night:  1px solid #2E32FB;
+
+//vermas-button
+$vermas-button-background-night: #2E32FB ;
+$vermas-button-border-night: 1px solid #4C2F99;;
+$vermas-button-shadow-night: inset -2px -2px 0 0 #284F99, inset 2px 2px 0 0 #FFFFFF;
+$vermas-button-hover-night: #2629CC;
+
+//secondary-button
+$secondary-button-background-day: $background-night;
+$secondary-button-border-day: 1px solid #B4B4B4;
+$secondary-button-shadow-day: inset -1px -1px 0 0 #5C5C5C, inset 1px 1px 0 0 #FFF4FD;;

@@ -1,0 +1,61 @@
+/*BUTTON*/
+.button {
+    font-family: $font;
+    font-size: 1rem;
+}
+
+//PRIMARY BUTTON
+.primary {
+    padding: 0.5625rem 18.36% 0.5625rem 18.36%;
+    background-color: $primary-button-day;
+    border: $primary-button-border-day;
+    box-shadow: $primary-button-shadow-day;
+    color: $primary-font-day;
+}
+
+//GRAY BUTTON
+.gray {
+    padding-top: 0.4375rem;
+    padding-bottom: 0.4375rem;
+    padding-left: 1rem;
+    background-color: $gray-button-day;
+    border: $gray-button-border;
+    box-shadow: $gray-button-shadow;
+    color: $primary-font-day;
+}
+
+//VER MÁS BUTTON
+.vermas {
+    padding: 0.5rem 0.625rem 0.5rem 0.625rem;
+    background-color: $vermas-button-background-day;
+    border: $vermas-button-border-day;
+    box-shadow: $vermas-button-shadow-day;
+    color: $ventana-color-font;
+    font-size: 0.875rem;
+}
+
+//CAPTURANDO BUTTON
+.capturando {
+    padding: 0.5625rem 3.343rem 0.5625rem 3.343rem;
+    background-color: $capturando-background;
+    border: $capturando-border;
+    color: $ventana-color-font;
+    box-shadow: $capturando-shadow;
+}
+
+//SECONDARY BUTTON
+.secondary {
+    padding: 0.5625rem 0.84375rem 0.5625rem 0.84375rem;
+    background-color: $secondary-button-background-day;
+    border: $secondary-button-border-day;
+    box-shadow: $secondary-button-shadow-day;
+    color: $primary-font-day;
+}
+
+
+
+
+
+
+
+
