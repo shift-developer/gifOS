@@ -2,11 +2,13 @@
 .btn {
     font-family: $font;
     font-size: 1rem;
+    display: block;
+    text-decoration: none;;
 }
 
 //PRIMARY BUTTON
 .primary {
-    padding: 0.5625rem 18.36% 0.5625rem 18.36%;
+    padding: 0.5625rem 1.5625rem 0.5625rem 1.5625rem;
     background-color: $primary-button-day;
     border: $primary-button-border-day;
     box-shadow: $primary-button-shadow-day;
@@ -21,6 +23,12 @@
     background-color: $gray-button-day;
     border: $gray-button-border;
     box-shadow: $gray-button-shadow;
+    color: $primary-font-day;
+}
+
+//MIS GUIFOS BUTTON
+.misguifos{
+    margin-top: 0.5625rem;
     color: $primary-font-day;
 }
 

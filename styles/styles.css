@@ -48,27 +48,44 @@ table {
   border-spacing: 0;
 }
 
+body {
+  background-color: #FFF4FD;
+  max-width: 1438px;
+  margin: auto;
+}
+
 .full {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  width: 100%;
+  display: block;
+  padding-left: 0.4375rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  max-width: 1438px;
 }
 
 .container {
+  max-width: 1200px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   margin-left: 6.328%;
   margin-right: 9.736%;
 }
 
+header {
+  margin-top: 2.1875rem;
+}
+
 /*BUTTON*/
 .btn {
   font-family: "Chakra Petch", sans-serif;
   font-size: 1rem;
+  display: block;
+  text-decoration: none;
 }
 
 .primary {
-  padding: 0.5625rem 18.36% 0.5625rem 18.36%;
+  padding: 0.5625rem 1.5625rem 0.5625rem 1.5625rem;
   background-color: #F7C9F3;
   border: 1px solid #110038;
   -webkit-box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
@@ -84,6 +101,11 @@ table {
   border: 1px solid #808080;
   -webkit-box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
           box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+  color: #110038;
+}
+
+.misguifos {
+  margin-top: 0.5625rem;
   color: #110038;
 }
 
@@ -116,6 +138,28 @@ table {
 }
 
 /* navbar */
+header, .nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.bienvenida {
+  color: #FFFFFF;
+  background-image: -webkit-gradient(linear, right top, left top, from(#F7C9F3), to(#4180F6));
+  background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
+  -webkit-box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+          box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+}
+
+.nav {
+  margin-top: 0.5625rem;
+  width: 419.5px;
+}
+
 /*containergif */
 /* crear gif */
 /*# sourceMappingURL=styles.css.map */

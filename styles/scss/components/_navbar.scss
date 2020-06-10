@@ -1,1 +1,17 @@
 /* navbar */
+
+header, .nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bienvenida {
+    color: $ventana-color-font;
+    background-image: $gradient-day;
+    box-shadow: $ventana-boxshadow-day;
+}
+
+.nav{
+    margin-top: 0.5625rem;
+    width: 419.5px;
+}

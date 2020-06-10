@@ -1,11 +1,25 @@
+body{
+    background-color: $background-day;
+    max-width: 1438px;
+    margin: auto;
+}
+
 .full {
     box-sizing: border-box;
-    width: 100%;
+    display: block;
+    padding-left: 0.4375rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    max-width: 1438px;
 }
 
 .container {
+    max-width: 1200px;
     box-sizing: border-box;
     margin-left: 6.328%;
     margin-right: 9.736%;
 }
 
+header{
+    margin-top: 2.1875rem;
+}
