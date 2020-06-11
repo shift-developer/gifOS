@@ -1,6 +1,6 @@
 body{
     background-color: $background-day;
-    max-width: 1438px;
+    max-width: 1600px;
     margin: auto;
 }
 
@@ -10,11 +10,11 @@ body{
     padding-left: 0.4375rem;
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
-    max-width: 1438px;
+    max-width: 1600px;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1500px;
     box-sizing: border-box;
     margin-left: 6.328%;
     margin-right: 9.736%;
@@ -22,4 +22,35 @@ body{
 
 header{
     margin-top: 2.1875rem;
+}
+
+.buscador {
+    margin-top: 38px;
+}
+
+.ventana{
+    background: $ventana-background-day;
+    box-shadow: $ventana-boxshadow-day;
+    padding: 3px;
+}
+
+.ventana-title{
+    font-family: $font;
+    color: $ventana-color-font;
+    letter-spacing: 0;
+    font-size: 0.9rem;
+    font-weight: 700;
+    background-image: $gradient-day;
+    padding: 4.8px 0px 4.8px 3px;
+}
+
+.separador {
+    font-family: $font;
+    font-size: 0.9rem;
+    color: $primary-font-day;
+    padding: 9px 0px 9px 7px;
+    background: $separador-background;
+    box-shadow: $separador-shadow;
+    margin-top: 64px;
+    margin-bottom: 16px;
 }

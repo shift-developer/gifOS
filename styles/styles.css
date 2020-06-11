@@ -50,7 +50,7 @@ table {
 
 body {
   background-color: #FFF4FD;
-  max-width: 1438px;
+  max-width: 1600px;
   margin: auto;
 }
 
@@ -61,11 +61,11 @@ body {
   padding-left: 0.4375rem;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-  max-width: 1438px;
+  max-width: 1600px;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1500px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   margin-left: 6.328%;
@@ -74,6 +74,40 @@ body {
 
 header {
   margin-top: 2.1875rem;
+}
+
+.buscador {
+  margin-top: 38px;
+}
+
+.ventana {
+  background: #E6E6E6;
+  -webkit-box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+          box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+  padding: 3px;
+}
+
+.ventana-title {
+  font-family: "Chakra Petch", sans-serif;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  background-image: -webkit-gradient(linear, right top, left top, from(#F7C9F3), to(#4180F6));
+  background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
+  padding: 4.8px 0px 4.8px 3px;
+}
+
+.separador {
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 0.9rem;
+  color: #110038;
+  padding: 9px 0px 9px 7px;
+  background: #FFFAFE;
+  -webkit-box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D;
+          box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D;
+  margin-top: 64px;
+  margin-bottom: 16px;
 }
 
 /*BUTTON*/
@@ -93,6 +127,25 @@ header {
   color: #110038;
 }
 
+.dropdown-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.dropdown-button:hover * {
+  background: #E6BBE2;
+}
+
+.dropdown-button:hover * span {
+  border: 1px dotted #110038;
+}
+
+.v-icon {
+  padding: 6.6px 12px 6.6px 12px;
+  display: inline;
+}
+
 .gray {
   padding-top: 0.4375rem;
   padding-bottom: 0.4375rem;
@@ -107,6 +160,18 @@ header {
 .misguifos {
   margin-top: 0.5625rem;
   color: #110038;
+}
+
+.misguifos:hover {
+  padding: 4px 10px 4px 0px;
+  border: 1px dotted #110038;
+}
+
+.misguifos::after {
+  content: '_';
+  position: relative;
+  right: 72px;
+  top: 1px;
 }
 
 .vermas {
@@ -151,13 +216,57 @@ header, .nav {
   color: #FFFFFF;
   background-image: -webkit-gradient(linear, right top, left top, from(#F7C9F3), to(#4180F6));
   background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
-  -webkit-box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
-          box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+  -webkit-box-shadow: 0 1px 0 0 #110038;
+          box-shadow: 0 1px 0 0 #110038;
 }
 
 .nav {
   margin-top: 0.5625rem;
   width: 419.5px;
+}
+
+.buscador form {
+  width: 97.25%;
+  margin: 12px 0px 12px 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.inputbuscar {
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 1rem;
+  color: #B4B4B4;
+  letter-spacing: 0;
+  line-height: 22px;
+  background: #FFFFFF;
+  padding: 11.5px 0px 11.5px 16px;
+  width: 88.8%;
+}
+
+.btn-buscar {
+  padding-left: 0.625rem;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 8px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.btn-buscar span {
+  margin-left: 10px;
+  color: #B4B4B4;
+  line-height: 18px;
 }
 
 /*containergif */

@@ -8,10 +8,11 @@ header, .nav {
 .bienvenida {
     color: $ventana-color-font;
     background-image: $gradient-day;
-    box-shadow: $ventana-boxshadow-day;
+    box-shadow: 0 1px 0 0 #110038;;
 }
 
 .nav{
     margin-top: 0.5625rem;
     width: 419.5px;
 }
+

@@ -1,0 +1,35 @@
+.buscador form {
+    width: 97.25%;
+    margin: 12px 0px 12px 15px;
+    display: flex;
+}
+
+.inputbuscar {
+    font-family: $font;
+    font-size: 1rem;
+    color: #B4B4B4;
+    letter-spacing: 0;
+    line-height: 22px;
+    background: #FFFFFF;
+    padding: 11.5px 0px 11.5px 16px;
+    width: 88.8%;
+}
+
+.btn-buscar {
+    padding-left: 0.625rem;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-right: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 8px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    span{
+        margin-left: 10px;
+        color: #B4B4B4;
+        line-height: 18px;
+    }
+  
+}

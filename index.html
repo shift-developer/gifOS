@@ -15,26 +15,53 @@
     </div>
 
     <header class="container">
-        <a href="#"><img src="./assets/gifOF_logo.png" class="logo"></a>
+        <a href="#"><img src="./assets/gifOF_logo.png" class="logo" alt=""></a>
         <nav>
             <ul class="nav">
                 <li><a class="btn primary" href="#">Crear Guifos</a></li>
-                <li><a class="btn primary">Elegir tema</a></li>
+                <li>
+                    <a class="dropdown-button" id="dropdown-button">
+                        <div class="btn primary">
+                            <span>Elegir tema</span>
+                        </div>
+                        <div class="btn primary v-icon">
+                            <span>
+                                <img src="./assets/dropdown.svg" alt="">
+                            </span>
+                        </div>
+                    </a>
+                </li>
                 <li><a class="btn misguifos" href="#">Mis guifos</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="container buscador">
-
+    <section class="container ventana buscador">
+        <div class="ventana-title">Buscar</div>
+        <form>
+            <input type="text" class="inputbuscar" placeholder="Busca gifs, hashtags, temas, busca lo que quieras…" name="search">
+            <button type="submit" class="btn gray btn-buscar"><img src="/assets/lupa_inactive.svg"><span>Buscar</span></button>
+        </form>
     </section>
 
     <section class="container sugerencias">
-
+        <h2 class="separador">Hoy te sugerimos:</h2>
+        <div class="gifs-container">
+            <div class="ventana-gif"></div>
+            <div class="ventana-gif"></div>
+            <div class="ventana-gif"></div>
+            <div class="ventana-gif"></div>
+        </div>
     </section>
 
     <section class="container tendencias">
-
+        <h2 class="separador">Tendencias:</h2>
+        <div class="gifs-container">
+            <div class="gif"></div>
+            <div class="gif"></div>
+            <div class="gif"></div>
+            <div class="gif"></div>
+        </div>
     </section>
 
 
