@@ -24,10 +24,12 @@ function getTrendingGifs(numeroDeGifs, arrDOM) {
     
 }
 
-
 //creamos el array de urls de gifs
 const sugerenciasGifs = document.getElementsByClassName('gif sugerencias');
 getTrendingGifs(4, sugerenciasGifs);
+
+const tendenciasGifs = document.getElementsByClassName('gif tendencias');
+getTrendingGifs(4, tendenciasGifs);
 
 console.log(sugerenciasGifs)
 //console.log();

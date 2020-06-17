@@ -182,6 +182,9 @@ header {
           box-shadow: inset -2px -2px 0 0 #284F99, inset 2px 2px 0 0 #FFFFFF;
   color: #FFFFFF;
   font-size: 0.875rem;
+  position: absolute;
+  -webkit-transform: translate(14px, -45px);
+          transform: translate(14px, -45px);
 }
 
 .capturando {
@@ -270,5 +273,36 @@ header, .nav {
 }
 
 /*containergif */
+.gifs-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.gif {
+  display: block;
+  height: 280px;
+  width: 280px;
+}
+
+.gif .tendencias {
+  height: 288px;
+  width: 298px;
+}
+
+.ventana-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 /* crear gif */
 /*# sourceMappingURL=styles.css.map */

@@ -70,6 +70,8 @@
     box-shadow: $vermas-button-shadow-day;
     color: $ventana-color-font;
     font-size: 0.875rem;
+    position: absolute;
+    transform: translate(14px, -45px);
 }
 
 //CAPTURANDO BUTTON
