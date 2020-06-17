@@ -11,10 +11,26 @@ async function llamarApi(endpoint, nroLimit) {
     return datosJson;
 }
 
-function getTrendingGifs(numeroDeGifs) {
-    llamarApi(trending, numeroDeGifs)
+function getTrendingGifs(numeroDeGifs, arrDOM) {
+    const trendingGifsUrls = [];
+    llamarApi(trending, numeroDeGifs).then((res) => {
+        for(let gif of res.data){
+            trendingGifsUrls.push(gif.images.downsized.url);
+        }
+        for(let i = 0; i < numeroDeGifs; i++){
+            arrDOM[i].src = trendingGifsUrls[i];
+        }
+    });
+    
 }
-llamarApi(trending, 4).then(res => console.log(res.data[0].images.downsized.url));
 
 
+//creamos el array de urls de gifs
+const sugerenciasGifs = document.getElementsByClassName('gif sugerencias');
+getTrendingGifs(4, sugerenciasGifs);
 
+console.log(sugerenciasGifs)
+//console.log();
+
+
+   
