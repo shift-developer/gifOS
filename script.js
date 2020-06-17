@@ -5,11 +5,16 @@ const random = 'random';
 const limit = '&limit=';
 
 
-async function llamarApi(endpoint, nroLimit){
+async function llamarApi(endpoint, nroLimit) {
     const datos = await fetch(`${API_URL}${endpoint}${API_KEY}${limit}${nroLimit}`);
     const datosJson = await datos.json();
     return datosJson;
 }
 
-llamarApi(trending, 4).then(res => console.log(res.data[0].images));
+function getTrendingGifs(numeroDeGifs) {
+    llamarApi(trending, numeroDeGifs)
+}
+llamarApi(trending, 4).then(res => console.log(res.data[0].images.downsized.url));
+
+
 
