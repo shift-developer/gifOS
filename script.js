@@ -80,7 +80,13 @@ function ventanaElegirTema() {
     }
 }
 
+function setSailorDayTheme() {
+    document.body.classList.remove('night');
+}
 
+function setSailorNightTheme() {
+    document.body.className = 'night';
+}
 
 //SUGERENCIAS
 getSugerenciasGifs('memes', 'reactions', 'cat', 'fails');

@@ -54,6 +54,10 @@ body {
   margin: auto;
 }
 
+body.night {
+  background-color: #110038;
+}
+
 .full {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -116,6 +120,7 @@ header {
   font-size: 1rem;
   display: block;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .primary {
@@ -125,6 +130,14 @@ header {
   -webkit-box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
           box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
   color: #110038;
+}
+
+body.night .primary {
+  background-color: #A72CB3;
+  border: 1px solid #110038;
+  -webkit-box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
+  color: #FFFFFF;
 }
 
 .dropdown-button {
@@ -147,6 +160,10 @@ header {
   -webkit-box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
           box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
   color: #110038;
+}
+
+body.night .gray {
+  background-color: #CCCCCC;
 }
 
 .theme-selected {

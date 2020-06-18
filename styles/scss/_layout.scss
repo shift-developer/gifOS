@@ -2,6 +2,10 @@ body{
     background-color: $background-day;
     max-width: 1600px;
     margin: auto;
+    
+    &.night {
+        background-color: $background-night;
+    }
 }
 
 .full {

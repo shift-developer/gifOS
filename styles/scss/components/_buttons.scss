@@ -4,6 +4,7 @@
     font-size: 1rem;
     display: block;
     text-decoration: none;;
+    cursor: pointer;
 }
 
 //PRIMARY BUTTON
@@ -13,12 +14,18 @@
     border: $primary-button-border-day;
     box-shadow: $primary-button-shadow-day;
     color: $primary-font-day;
+
+    body.night & {
+        background-color: $primary-button-night;
+        border: $primary-button-border-night;
+        box-shadow: $primary-button-shadow-night;
+        color: $primary-font-night;
+    }
 }
 
 //DROPDOWN BUTTON
 .dropdown-button{
     display: flex;
-    
 }
 
 //DROPDOWN ICON
@@ -37,6 +44,10 @@
     border: $gray-button-border;
     box-shadow: $gray-button-shadow;
     color: $primary-font-day;
+
+    body.night &{
+        background-color: $gray-button-night;
+    }
 }
 
 //ELEGIRTEMA SELECTED BUTTON
