@@ -35,25 +35,30 @@ function getTrendingGifs(numeroDeGifs, arrDOM) {
     });  
 }
 
-function getSugerenciasGifs() {
-    let tags = [];
-    llamarApi(trendingSearchs).then((res) => {
-        tags = res.data;
-        llamarApi(random, )
+function getSugerenciasGifs(tag1, tag2, tag3, tag4, arrDOM) {
+    llamarApi(random, '', '', tag1).then((res) => {
+        arrDOM[0].src = res.data.images.downsized.url;
     })
-    
+    llamarApi(random, '', '', tag2).then((res) => {
+        arrDOM[1].src = res.data.images.downsized.url;
+    })
+    llamarApi(random, '', '', tag3).then((res) => {
+        arrDOM[2].src = res.data.images.downsized.url;
+    })
+    llamarApi(random, '', '', tag4).then((res) => {
+        arrDOM[3].src = res.data.images.downsized.url;
+    })
 }
 
 
 //creamos el array de urls de gifs
 const sugerenciasGifs = document.getElementsByClassName('gif sugerencias');
-getTrendingGifs(4, sugerenciasGifs);
+getSugerenciasGifs('memes', 'reactions', 'cat', 'fails', sugerenciasGifs);
 
 const tendenciasGifs = document.getElementsByClassName('gif tendencias');
-getTrendingGifs(4, tendenciasGifs);
+getTrendingGifs(8, tendenciasGifs);
 
-console.log(sugerenciasGifs)
-//console.log();
 
-getSugerenciasGifs()
+
+
    
