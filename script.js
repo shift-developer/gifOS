@@ -27,15 +27,6 @@ async function llamarApi(endpoint, nroLimit = '', stringSearch = '', stringTag =
     return datosJSON;
 }
 
-function getTrendingGifs(numeroDeGifs, idContainer) {
-    crearHTMLGifs(numeroDeGifs, idContainer);
-    llamarApi(trending, numeroDeGifs).then((res) => {
-        for(let i = 0; i < numeroDeGifs; i++){
-            arrDOM[i].src = res.data[i].images.downsized.url;
-        }
-    });  
-}
-
 function getSugerenciasGifs(tag1, tag2, tag3, tag4, arrDOM) {
     llamarApi(random, '', '', tag1).then((res) => {
         arrDOM[0].src = res.data.images.downsized.url;
@@ -51,27 +42,42 @@ function getSugerenciasGifs(tag1, tag2, tag3, tag4, arrDOM) {
     })
 }
 
-
-//creamos el array de urls de gifs
-const sugerenciasGifs = document.getElementsByClassName('gif sugerencias');
-getSugerenciasGifs('memes', 'reactions', 'cat', 'fails', sugerenciasGifs);
-
-const tendenciasContainer = document.querySelector('#tendencias-container');
-getTrendingGifs(4, '#tendencias-container');
-
 function crearHTMLGifs(numeroDeGifs, idContainer) {
     const container = document.querySelector(idContainer);
-    const arrHTMLGifs = [];
     for(let i = 0; i < numeroDeGifs; i++) {
         let containerGif = document.createElement('div');
         containerGif.className = 'archivo-gif';
         container.appendChild(containerGif);
         let gif = document.createElement('img');
         gif.className = 'gif tendencias';
-        gif.appendChild(containerGif);
+        containerGif.appendChild(gif);
     }
     console.log(container);
 }
+
+
+function getTrendingGifs(numeroDeGifs, idContainer) {
+    crearHTMLGifs(numeroDeGifs, idContainer);
+    const arrDOM = document.getElementsByClassName('gif tendencias');
+    llamarApi(trending, numeroDeGifs).then((res) => {
+        for(let i = 0; i < numeroDeGifs; i++){
+            arrDOM[i].src = res.data[i].images.downsized.url;
+        }
+    });  
+}
+
+
+
+//creamos el array de urls de gifs
+const sugerenciasGifs = document.getElementsByClassName('gif sugerencias');
+getSugerenciasGifs('memes', 'reactions', 'cat', 'fails', sugerenciasGifs);
+
+const tendenciasContainer = document.querySelector('#tendencias-container');
+getTrendingGifs(20, '#tendencias-container');
+
+
+
+
 
 
 
