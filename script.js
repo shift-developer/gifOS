@@ -9,11 +9,12 @@ const limit = '&limit='; //The maximum number of objects to return. (Default: ‚Ä
 const q = '&q='; //Search query term or phrase.
 const tag = '&tag=' //Filters results by specified tag..
 
+//GLOBAL FUNCTIONS 
 async function llamarApi(endpoint, nroLimit = '', stringSearch = '', stringTag = '') {
     const API_KEY = '?api_key=CAllNkSvYhmRBlXwfjBCJcvN3CZJ69w5';
     const API_URL = 'http://api.giphy.com/v1/';
     let url = `${API_URL}${endpoint}${API_KEY}`;
-
+    //-> FALTA AGREGAR TRY CATCH PARA EL MANEJO DE ERRORES
     if(endpoint == trending || endpoint == search) {
      url = url + limit + nroLimit;
         if(endpoint == trending) {
@@ -27,18 +28,24 @@ async function llamarApi(endpoint, nroLimit = '', stringSearch = '', stringTag =
     return datosJSON;
 }
 
-function getSugerenciasGifs(tag1, tag2, tag3, tag4, arrDOM) {
+function getSugerenciasGifs(tag1, tag2, tag3, tag4) {
+    const sugerenciasGifs = document.getElementsByClassName('gif sugerencias');
+    const tagGifs = document.getElementsByClassName('tag-gif');
+    for(let i = 0; i < 4; i++) {
+        tagGifs[i].innerHTML = '#' + arguments[i];
+    }
+   
     llamarApi(random, '', '', tag1).then((res) => {
-        arrDOM[0].src = res.data.images.downsized.url;
+        sugerenciasGifs[0].src = res.data.images.downsized.url;
     })
     llamarApi(random, '', '', tag2).then((res) => {
-        arrDOM[1].src = res.data.images.downsized.url;
+        sugerenciasGifs[1].src = res.data.images.downsized.url;
     })
     llamarApi(random, '', '', tag3).then((res) => {
-        arrDOM[2].src = res.data.images.downsized.url;
+        sugerenciasGifs[2].src = res.data.images.downsized.url;
     })
     llamarApi(random, '', '', tag4).then((res) => {
-        arrDOM[3].src = res.data.images.downsized.url;
+        sugerenciasGifs[3].src = res.data.images.downsized.url;
     })
 }
 
@@ -52,10 +59,8 @@ function crearHTMLGifs(numeroDeGifs, idContainer) {
         gif.className = 'gif tendencias';
         containerGif.appendChild(gif);
     }
-    console.log(container);
 }
-
-
+//podriamos cargar la imagen fija y dejar el hover para que el gif funcione, de ese modo cargamos m√°s rapido y mejora el UX
 function getTrendingGifs(numeroDeGifs, idContainer) {
     crearHTMLGifs(numeroDeGifs, idContainer);
     const arrDOM = document.getElementsByClassName('gif tendencias');
@@ -66,14 +71,22 @@ function getTrendingGifs(numeroDeGifs, idContainer) {
     });  
 }
 
+function ventanaElegirTema() {
+    let estado = document.querySelector('.elegir-theme').style.display;
+    if(estado == 'none') {
+        document.querySelector('.elegir-theme').style.display = 'block';
+    } else {
+        document.querySelector('.elegir-theme').style.display = 'none';
+    }
+}
 
 
-//creamos el array de urls de gifs
-const sugerenciasGifs = document.getElementsByClassName('gif sugerencias');
-getSugerenciasGifs('memes', 'reactions', 'cat', 'fails', sugerenciasGifs);
 
-const tendenciasContainer = document.querySelector('#tendencias-container');
-getTrendingGifs(20, '#tendencias-container');
+//SUGERENCIAS
+getSugerenciasGifs('memes', 'reactions', 'cat', 'fails');
+
+//TENDENCIAS
+getTrendingGifs(12, '#tendencias-container'); 
 
 
 

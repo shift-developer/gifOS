@@ -16,3 +16,16 @@ header, .nav {
     width: 419.5px;
 }
 
+//ELEGIR TEMA
+.elegir-theme {
+    display: none;
+    width: 150px;
+    position: absolute;
+    padding: 10px;
+    transform: translate(0px, 36px);
+}
+
+.themebtn {
+    width: 100%;
+    text-align: start;
+}

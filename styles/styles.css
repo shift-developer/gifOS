@@ -133,14 +133,6 @@ header {
   display: flex;
 }
 
-.dropdown-button:hover * {
-  background: #E6BBE2;
-}
-
-.dropdown-button:hover * span {
-  border: 1px dotted #110038;
-}
-
 .v-icon {
   padding: 6.6px 12px 6.6px 12px;
   display: inline;
@@ -157,14 +149,21 @@ header {
   color: #110038;
 }
 
+.theme-selected {
+  padding-top: 0.4375rem;
+  padding-bottom: 0.4375rem;
+  padding-left: 1rem;
+  margin-bottom: 10px;
+  color: #110038;
+  background-color: #FFF4FD;
+  border: 1px solid #CCA6C9;
+  -webkit-box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+}
+
 .misguifos {
   margin-top: 0.5625rem;
   color: #110038;
-}
-
-.misguifos:hover {
-  padding: 4px 10px 4px 0px;
-  border: 1px dotted #110038;
 }
 
 .misguifos::after {
@@ -226,6 +225,20 @@ header, .nav {
 .nav {
   margin-top: 0.5625rem;
   width: 419.5px;
+}
+
+.elegir-theme {
+  display: none;
+  width: 150px;
+  position: absolute;
+  padding: 10px;
+  -webkit-transform: translate(0px, 36px);
+          transform: translate(0px, 36px);
+}
+
+.themebtn {
+  width: 100%;
+  text-align: start;
 }
 
 .buscador form {
@@ -293,6 +306,10 @@ header, .nav {
 .gif .tendencias {
   height: 288px;
   width: 298px;
+}
+
+.archivo-gif {
+  margin-bottom: 16px;
 }
 
 .ventana-title {

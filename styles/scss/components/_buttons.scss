@@ -18,14 +18,7 @@
 //DROPDOWN BUTTON
 .dropdown-button{
     display: flex;
-    &:hover{
-        *{
-            background: $primary-button-hover-day;
-            span{
-                border: 1px dotted $primary-font-day;
-            }
-        }
-    }
+    
 }
 
 //DROPDOWN ICON
@@ -46,14 +39,22 @@
     color: $primary-font-day;
 }
 
+//ELEGIRTEMA SELECTED BUTTON
+.theme-selected{
+    padding-top: 0.4375rem;
+    padding-bottom: 0.4375rem;
+    padding-left: 1rem;
+    margin-bottom: 10px;
+    color: $primary-font-day;
+    background-color: $elegirtema-button-selected-day;
+    border: $elegirtema-button-selected-border-day;
+    box-shadow: $elegirtema-button-selected-shadow-day;
+}
+
 //MIS GUIFOS BUTTON
 .misguifos{
     margin-top: 0.5625rem;
     color: $primary-font-day;
-    &:hover{
-        padding: 4px 10px 4px 0px;
-        border: 1px dotted #110038;
-    }
     &::after{
         content: '_';
         position: relative;
