@@ -35,11 +35,13 @@
 }
 
 .search-sugerencias {
+    display: none;
     padding: 16px 129px 7px 15px;
     position: absolute;
     transform: translate(-4px, 3px);
     width: 83.95%;
     box-sizing: border-box;
+    max-width: 1343.2px;
 }
 
 .search-sugerencia{

@@ -357,6 +357,7 @@ body.night .bienvenida {
 }
 
 .search-sugerencias {
+  display: none;
   padding: 16px 129px 7px 15px;
   position: absolute;
   -webkit-transform: translate(-4px, 3px);
@@ -364,6 +365,7 @@ body.night .bienvenida {
   width: 83.95%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  max-width: 1343.2px;
 }
 
 .search-sugerencia {
@@ -393,9 +395,6 @@ body.night .bienvenida {
 .gif .tendencias {
   height: 288px;
   width: 298px;
-}
-
-.archivo-gif {
   margin-bottom: 16px;
 }
 
