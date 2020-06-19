@@ -36,6 +36,11 @@ header{
     background: $ventana-background-day;
     box-shadow: $ventana-boxshadow-day;
     padding: 3px;
+
+    body.night & {
+        background: $ventana-background-night;
+        box-shadow: $ventana-boxshadow-night;
+    }
 }
 
 .ventana-title{
@@ -46,6 +51,10 @@ header{
     font-weight: 700;
     background-image: $gradient-day;
     padding: 4.8px 0px 4.8px 3px;
+
+    body.night & {
+        background-image: $gradient-night;
+    }
 }
 
 .separador {
@@ -55,6 +64,11 @@ header{
     padding: 9px 0px 9px 7px;
     background: $separador-background;
     box-shadow: $separador-shadow;
+    border: $separador-border-day;
     margin-top: 64px;
     margin-bottom: 16px;
+
+    body.night & {
+        border: $separador-border-night;    
+    }
 }

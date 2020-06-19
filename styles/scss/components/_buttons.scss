@@ -55,11 +55,20 @@
     padding-top: 0.4375rem;
     padding-bottom: 0.4375rem;
     padding-left: 1rem;
-    margin-bottom: 10px;
     color: $primary-font-day;
     background-color: $elegirtema-button-selected-day;
     border: $elegirtema-button-selected-border-day;
     box-shadow: $elegirtema-button-selected-shadow-day;
+
+    body.night & {
+        background-color: $elegirtema-button-selected-night;
+        border: $elegirtema-button-selected-border-night;
+        box-shadow: $elegirtema-button-selected-shadow-night;
+    }
+}
+
+#sailor-day {
+    margin-bottom: 10px;
 }
 
 //MIS GUIFOS BUTTON
@@ -71,6 +80,10 @@
         position: relative;
         right: 72px;
         top: 1px;
+    }
+
+    body.night & {
+        color: $primary-font-night;
     }
 }
 
@@ -84,6 +97,12 @@
     font-size: 0.875rem;
     position: absolute;
     transform: translate(14px, -45px);
+
+    body.night & {
+        background-color: $vermas-button-background-night;
+        border: $vermas-button-border-night;
+        box-shadow: $vermas-button-shadow-night;
+    }
 }
 
 //CAPTURANDO BUTTON
@@ -102,6 +121,12 @@
     border: $secondary-button-border-day;
     box-shadow: $secondary-button-shadow-day;
     color: $primary-font-day;
+
+    body.night & {
+        background-color: $secondary-button-background-night;
+        border: $secondary-button-border-night;
+        box-shadow: $secondary-button-shadow-night;
+    }
 }
 
 

@@ -82,11 +82,22 @@ function ventanaElegirTema() {
 
 function setSailorDayTheme() {
     document.body.classList.remove('night');
+    document.querySelector('.logo').src = './assets/gifOF_logo.png';
+
+    const sailorClass = 'btn themebtn';
+    document.querySelector('#sailor-day').className = sailorClass + ' theme-selected';
+    document.querySelector('#sailor-night').className = sailorClass + ' gray';
 }
 
 function setSailorNightTheme() {
     document.body.className = 'night';
+    document.querySelector('.logo').src = './assets/gifOF_logo_dark.png';
+    
+    const sailorClass = 'btn themebtn';
+    document.querySelector('#sailor-day').className = sailorClass + ' gray';
+    document.querySelector('#sailor-night').className = sailorClass + ' theme-selected';
 }
+
 
 //SUGERENCIAS
 getSugerenciasGifs('memes', 'reactions', 'cat', 'fails');

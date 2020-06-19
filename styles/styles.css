@@ -91,6 +91,12 @@ header {
   padding: 3px;
 }
 
+body.night .ventana {
+  background: #B4B4B4;
+  -webkit-box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
+          box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
+}
+
 .ventana-title {
   font-family: "Chakra Petch", sans-serif;
   color: #FFFFFF;
@@ -102,6 +108,11 @@ header {
   padding: 4.8px 0px 4.8px 3px;
 }
 
+body.night .ventana-title {
+  background-image: -webkit-gradient(linear, right top, left top, from(#EE3EFE), to(#2E32FB));
+  background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
+}
+
 .separador {
   font-family: "Chakra Petch", sans-serif;
   font-size: 0.9rem;
@@ -110,8 +121,13 @@ header {
   background: #FFFAFE;
   -webkit-box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D;
           box-shadow: inset -2px -2px 0 0 #E6DCE4, inset 2px 2px 0 0 #80687D;
+  border: 1px solid #E6BBE2;
   margin-top: 64px;
   margin-bottom: 16px;
+}
+
+body.night .separador {
+  border: 1px solid #2E32FB;
 }
 
 /*BUTTON*/
@@ -170,12 +186,22 @@ body.night .gray {
   padding-top: 0.4375rem;
   padding-bottom: 0.4375rem;
   padding-left: 1rem;
-  margin-bottom: 10px;
   color: #110038;
   background-color: #FFF4FD;
   border: 1px solid #CCA6C9;
   -webkit-box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
           box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+}
+
+body.night .theme-selected {
+  background-color: #2E32FB;
+  border: 1px solid rgba(51, 53, 143, 0.2);
+  -webkit-box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+}
+
+#sailor-day {
+  margin-bottom: 10px;
 }
 
 .misguifos {
@@ -188,6 +214,10 @@ body.night .gray {
   position: relative;
   right: 72px;
   top: 1px;
+}
+
+body.night .misguifos {
+  color: #FFFFFF;
 }
 
 .vermas {
@@ -203,6 +233,13 @@ body.night .gray {
           transform: translate(14px, -45px);
 }
 
+body.night .vermas {
+  background-color: #2E32FB;
+  border: 1px solid #4C2F99;
+  -webkit-box-shadow: inset -2px -2px 0 0 #284F99, inset 2px 2px 0 0 #FFFFFF;
+          box-shadow: inset -2px -2px 0 0 #284F99, inset 2px 2px 0 0 #FFFFFF;
+}
+
 .capturando {
   padding: 0.5625rem 3.343rem 0.5625rem 3.343rem;
   background-color: #FF6161;
@@ -214,11 +251,18 @@ body.night .gray {
 
 .secondary {
   padding: 0.5625rem 0.84375rem 0.5625rem 0.84375rem;
+  background-color: #FFF4FD;
+  border: 1px solid #110038;
+  -webkit-box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+  color: #110038;
+}
+
+body.night .secondary {
   background-color: #110038;
   border: 1px solid #B4B4B4;
   -webkit-box-shadow: inset -1px -1px 0 0 #5C5C5C, inset 1px 1px 0 0 #FFF4FD;
           box-shadow: inset -1px -1px 0 0 #5C5C5C, inset 1px 1px 0 0 #FFF4FD;
-  color: #110038;
 }
 
 /* navbar */
@@ -237,6 +281,11 @@ header, .nav {
   background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
   -webkit-box-shadow: 0 1px 0 0 #110038;
           box-shadow: 0 1px 0 0 #110038;
+}
+
+body.night .bienvenida {
+  background-image: -webkit-gradient(linear, right top, left top, from(#EE3EFE), to(#2E32FB));
+  background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
 }
 
 .nav {
