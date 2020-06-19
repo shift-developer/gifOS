@@ -361,7 +361,9 @@ body.night .bienvenida {
   position: absolute;
   -webkit-transform: translate(-4px, 3px);
           transform: translate(-4px, 3px);
-  width: 77.608%;
+  width: 83.95%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .search-sugerencia {
