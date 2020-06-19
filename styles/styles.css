@@ -48,6 +48,11 @@ table {
   border-spacing: 0;
 }
 
+html {
+  max-width: 1600px;
+  margin: auto;
+}
+
 body {
   background-color: #FFF4FD;
   max-width: 1600px;
@@ -349,6 +354,20 @@ body.night .bienvenida {
   margin-left: 10px;
   color: #B4B4B4;
   line-height: 18px;
+}
+
+.search-sugerencias {
+  padding: 16px 129px 7px 15px;
+  position: absolute;
+  -webkit-transform: translate(-4px, 3px);
+          transform: translate(-4px, 3px);
+  width: 77.608%;
+}
+
+.search-sugerencia {
+  margin-bottom: 10px;
+  width: 100%;
+  text-align: start;
 }
 
 /*containergif */

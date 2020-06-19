@@ -92,18 +92,23 @@ function setSailorDayTheme() {
 function setSailorNightTheme() {
     document.body.className = 'night';
     document.querySelector('.logo').src = './assets/gifOF_logo_dark.png';
-    
+
     const sailorClass = 'btn themebtn';
     document.querySelector('#sailor-day').className = sailorClass + ' gray';
     document.querySelector('#sailor-night').className = sailorClass + ' theme-selected';
 }
-
 
 //SUGERENCIAS
 getSugerenciasGifs('memes', 'reactions', 'cat', 'fails');
 
 //TENDENCIAS
 getTrendingGifs(12, '#tendencias-container'); 
+
+//CAMBIAR TEMA (agregar eventos con addeventlistener más adelante)
+
+//BUSCADOR
+
+
 
 
 
