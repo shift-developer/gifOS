@@ -395,6 +395,9 @@ body.night .bienvenida {
 .gif .tendencias {
   height: 288px;
   width: 298px;
+}
+
+#tendencias-container .archivo-gif {
   margin-bottom: 16px;
 }
 
