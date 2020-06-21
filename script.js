@@ -128,9 +128,18 @@ function getSearchGifs(numeroDeGifs, searchString) {
 
 }
 
-async function getSearchSuggestions(term) {
+async function getSearchSuggestions(tag) {
     const API_KEY = '?api_key=CAllNkSvYhmRBlXwfjBCJcvN3CZJ69w5';
-    const url = 'http://api.giphy.com/v1/tags/related/' + '{' + term + '}' + API_KEY;
+    const url = 'http://api.giphy.com/v1/tags/related/' + '{' + tag + '}' + API_KEY;
+    const datos = await fetch(url);
+    const datosJSON = await datos.json();
+
+    return datosJSON;
+}
+
+async function getSearchAutocomplete(tag) {
+    const API_KEY = '?api_key=CAllNkSvYhmRBlXwfjBCJcvN3CZJ69w5';
+    const url = 'http://api.giphy.com/v1/gifs/search/tags' + API_KEY + q + tag;
     const datos = await fetch(url);
     const datosJSON = await datos.json();
 
@@ -147,7 +156,7 @@ getTrendingGifs(12, '#tendencias-container');
 //CAMBIAR TEMA (agregar eventos con addeventlistener más adelante)
 
 //BUSCADOR
-getSearchSuggestions('hola').then((res) => console.log(res));
+
 
 
 
