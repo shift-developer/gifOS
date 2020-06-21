@@ -14,15 +14,17 @@ async function llamarApi(endpoint, nroLimit = '', stringSearch = '', stringTag =
     const API_KEY = '?api_key=CAllNkSvYhmRBlXwfjBCJcvN3CZJ69w5';
     const API_URL = 'http://api.giphy.com/v1/';
     let url = `${API_URL}${endpoint}${API_KEY}`;
+
     //-> FALTA AGREGAR TRY CATCH PARA EL MANEJO DE ERRORES
     if(endpoint == trending || endpoint == search) {
      url = url + limit + nroLimit;
-        if(endpoint == trending) {
+        if(endpoint == search) {
             url = url + q + stringSearch;
         }
     } else if (endpoint == random){
         url = url + tag + stringTag;
     }
+
     const datos = await fetch(url);
     const datosJSON = await datos.json();
     return datosJSON;
@@ -31,8 +33,13 @@ async function llamarApi(endpoint, nroLimit = '', stringSearch = '', stringTag =
 function getSugerenciasGifs(tag1, tag2, tag3, tag4) {
     const sugerenciasGifs = document.getElementsByClassName('gif sugerencias');
     const tagGifs = document.getElementsByClassName('tag-gif');
+    const buttonsVerMas = document.getElementsByClassName('btn vermas');
+
     for(let i = 0; i < 4; i++) {
         tagGifs[i].innerHTML = '#' + arguments[i];
+        buttonsVerMas[i].addEventListener('click', () => {
+            getSearchGifs(8, arguments[i]);
+        })
     }
    
     llamarApi(random, '', '', tag1).then((res) => {
@@ -49,21 +56,23 @@ function getSugerenciasGifs(tag1, tag2, tag3, tag4) {
     })
 }
 
-function crearHTMLGifs(numeroDeGifs, idContainer) {
+function crearHTMLGifs(numeroDeGifs, idContainer, gifClassName) {
     const container = document.querySelector(idContainer);
+
     for(let i = 0; i < numeroDeGifs; i++) {
         let containerGif = document.createElement('div');
         containerGif.className = 'archivo-gif';
         container.appendChild(containerGif);
         let gif = document.createElement('img');
-        gif.className = 'gif tendencias';
+        gif.className = 'gif sinventana ' + gifClassName;
         containerGif.appendChild(gif);
     }
 }
 //podriamos cargar la imagen fija y dejar el hover para que el gif funcione, de ese modo cargamos más rapido y mejora el UX
 function getTrendingGifs(numeroDeGifs, idContainer) {
-    crearHTMLGifs(numeroDeGifs, idContainer);
+    crearHTMLGifs(numeroDeGifs, idContainer, 'tendencias');
     const arrDOM = document.getElementsByClassName('gif tendencias');
+
     llamarApi(trending, numeroDeGifs).then((res) => {
         for(let i = 0; i < numeroDeGifs; i++){
             arrDOM[i].src = res.data[i].images.downsized.url;
@@ -73,6 +82,7 @@ function getTrendingGifs(numeroDeGifs, idContainer) {
 
 function ventanaElegirTema() {
     let estado = document.querySelector('.elegir-theme').style.display;
+
     if(estado == 'none') {
         document.querySelector('.elegir-theme').style.display = 'block';
     } else {
@@ -96,6 +106,27 @@ function setSailorNightTheme() {
     const sailorClass = 'btn themebtn';
     document.querySelector('#sailor-day').className = sailorClass + ' gray';
     document.querySelector('#sailor-night').className = sailorClass + ' theme-selected';
+}
+
+function getSearchGifs(numeroDeGifs, searchString) {
+    const sugerenciasSection = document.querySelector('#sugerencias');
+    const tendenciasSection = document.querySelector('#tendencias');
+    sugerenciasSection.style.display = 'none';
+    tendenciasSection.style.display= 'none';
+
+    crearHTMLGifs(numeroDeGifs, '#search-container', 'search-results');
+    const arrDOM = document.getElementsByClassName('gif search-results');
+    const separador = document.querySelector('#separador-resultname');
+    separador.innerHTML = searchString + ' (resultados)';
+    console.log(arrDOM);
+
+    llamarApi(search, numeroDeGifs, searchString).then((res) => {
+        
+        for(let i = 0; i < numeroDeGifs; i++){
+            arrDOM[i].src = res.data[i].images.downsized.url;
+        }
+    });  
+
 }
 
 //SUGERENCIAS
