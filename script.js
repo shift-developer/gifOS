@@ -2,7 +2,6 @@
 const trending = 'gifs/trending';
 const search = 'gifs/search';
 const random = 'gifs/random';
-const trendingSearchs = 'trending/searches'
 
 //REQUEST PARAMETERS
 const limit = '&limit='; //The maximum number of objects to return. (Default: “25”)
@@ -23,7 +22,7 @@ async function llamarApi(endpoint, nroLimit = '', stringSearch = '', stringTag =
         }
     } else if (endpoint == random){
         url = url + tag + stringTag;
-    }
+    } 
 
     const datos = await fetch(url);
     const datosJSON = await datos.json();
@@ -117,8 +116,8 @@ function getSearchGifs(numeroDeGifs, searchString) {
     crearHTMLGifs(numeroDeGifs, '#search-container', 'search-results');
     const arrDOM = document.getElementsByClassName('gif search-results');
     const separador = document.querySelector('#separador-resultname');
+    separador.style.display = 'block';
     separador.innerHTML = searchString + ' (resultados)';
-    console.log(arrDOM);
 
     llamarApi(search, numeroDeGifs, searchString).then((res) => {
         
@@ -129,6 +128,16 @@ function getSearchGifs(numeroDeGifs, searchString) {
 
 }
 
+async function getSearchSuggestions(term) {
+    const API_KEY = '?api_key=CAllNkSvYhmRBlXwfjBCJcvN3CZJ69w5';
+    const url = 'http://api.giphy.com/v1/tags/related/' + '{' + term + '}' + API_KEY;
+    const datos = await fetch(url);
+    const datosJSON = await datos.json();
+
+    return datosJSON;
+}
+
+
 //SUGERENCIAS
 getSugerenciasGifs('memes', 'reactions', 'cat', 'fails');
 
@@ -138,7 +147,7 @@ getTrendingGifs(12, '#tendencias-container');
 //CAMBIAR TEMA (agregar eventos con addeventlistener más adelante)
 
 //BUSCADOR
-
+getSearchSuggestions('hola').then((res) => console.log(res));
 
 
 

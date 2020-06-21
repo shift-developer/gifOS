@@ -410,5 +410,9 @@ body.night .bienvenida {
           justify-content: space-between;
 }
 
+#separador-resultname {
+  display: none;
+}
+
 /* crear gif */
 /*# sourceMappingURL=styles.css.map */
