@@ -112,6 +112,12 @@ function getSearchGifs(numeroDeGifs, searchString) {
     const tendenciasSection = document.querySelector('#tendencias');
     sugerenciasSection.style.display = 'none';
     tendenciasSection.style.display= 'none';
+    const gifsContainer = document.querySelector('#search-container');
+
+    while (gifsContainer.hasChildNodes()) {  
+        gifsContainer.removeChild(gifsContainer.firstChild);
+    }
+    
 
     crearHTMLGifs(numeroDeGifs, '#search-container', 'search-results');
     const arrDOM = document.getElementsByClassName('gif search-results');
@@ -156,16 +162,42 @@ getTrendingGifs(12, '#tendencias-container');
 //CAMBIAR TEMA (agregar eventos con addeventlistener más adelante)
 
 //BUSCADOR
+const inputBuscar = document.querySelector('.inputbuscar');
+const ventanaSugerencias = document.querySelector('.search-sugerencias');
+const resultadosSugeridos = document.getElementsByClassName('btn gray search-sugerencia');
+
+inputBuscar.addEventListener('input', () => {
+
+    if(inputBuscar.value.length < 3) {
+        ventanaSugerencias.style.display = 'none';
+    }
+    
+    if(inputBuscar.value.length >= 3) {
+        getSearchSuggestions(inputBuscar.value).then( (res) => {
+            resultadosSugeridos[1].innerHTML = res.data[0].name;
+            resultadosSugeridos[2].innerHTML = res.data[1].name;
+    
+            ventanaSugerencias.style.display = 'block';
+            resultadosSugeridos[1].onclick = () => {
+                getSearchGifs(8, res.data[0].name);
+                ventanaSugerencias.style.display = 'none';
+            };
+            resultadosSugeridos[2].onclick = () => {
+                getSearchGifs(8, res.data[1].name);
+                ventanaSugerencias.style.display = 'none';
+            };
+        });
+
+        getSearchAutocomplete(inputBuscar.value).then( (res) => {
+            resultadosSugeridos[0].innerHTML = res.data[0].name;
+            resultadosSugeridos[0].onclick = () => {
+                getSearchGifs(8, res.data[0].name);
+                ventanaSugerencias.style.display = 'none'
+            };
+        });
+    }
+});
 
 
 
 
-
-
-
-
-
-
-
-
-   
