@@ -162,9 +162,12 @@ getTrendingGifs(12, '#tendencias-container');
 //CAMBIAR TEMA (agregar eventos con addeventlistener más adelante)
 
 //BUSCADOR
+const sectionBuscador = document.querySelector('.container .ventana .buscador');
 const inputBuscar = document.querySelector('.inputbuscar');
 const ventanaSugerencias = document.querySelector('.search-sugerencias');
 const resultadosSugeridos = document.getElementsByClassName('btn gray search-sugerencia');
+const btnBuscar = document.querySelector('.btn-buscar');
+const form = document.querySelector('#form');
 
 inputBuscar.addEventListener('input', () => {
 
@@ -192,9 +195,38 @@ inputBuscar.addEventListener('input', () => {
             resultadosSugeridos[0].innerHTML = res.data[0].name;
             resultadosSugeridos[0].onclick = () => {
                 getSearchGifs(8, res.data[0].name);
-                ventanaSugerencias.style.display = 'none'
+                ventanaSugerencias.style.display = 'none';
             };
         });
+    }
+});
+
+
+inputBuscar.addEventListener('blur', () => {
+    ventanaSugerencias.style.display = 'none';
+})
+
+inputBuscar.addEventListener('keyup', (e) => {
+    let keycode = e.keycode;
+    let stringSearch = inputBuscar.value;
+
+    if(keycode == '13' && stringSearch.lenght > 0){
+        ventanaSugerencias.style.display = 'none';
+        getSearchGifs(8, stringSearch);
+        
+    }
+});
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+});
+
+btnBuscar.addEventListener('click', () => {
+    let stringSearch = inputBuscar.value;
+    if(stringSearch.length > 0){
+    ventanaSugerencias.style.display = 'none';
+    getSearchGifs(8, stringSearch);
+    
     }
 });
 
