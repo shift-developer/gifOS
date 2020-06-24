@@ -120,6 +120,21 @@
     }
 }
 
+.tag-search {
+    padding: 0.5rem 0.625rem 0.5rem 0.625rem;
+    background-color: $vermas-button-background-day;
+    border: $vermas-button-border-day;
+    box-shadow: $vermas-button-shadow-day;
+    color: $ventana-color-font;
+    font-size: 0.875rem;
+
+    body.night & {
+        background-color: $vermas-button-background-night;
+        border: $vermas-button-border-night;
+        box-shadow: $vermas-button-shadow-night;
+    }
+}
+
 //CAPTURANDO BUTTON
 .capturando {
     padding: 0.5625rem 3.343rem 0.5625rem 3.343rem;

@@ -135,6 +135,10 @@ body.night .separador {
   border: 1px solid #2E32FB;
 }
 
+.tags-buscados {
+  margin-top: 12px;
+}
+
 /*BUTTON*/
 .btn {
   font-family: "Chakra Petch", sans-serif;
@@ -253,6 +257,23 @@ body.night .misguifos {
 }
 
 body.night .vermas {
+  background-color: #2E32FB;
+  border: 1px solid #4C2F99;
+  -webkit-box-shadow: inset -2px -2px 0 0 #284F99, inset 2px 2px 0 0 #FFFFFF;
+          box-shadow: inset -2px -2px 0 0 #284F99, inset 2px 2px 0 0 #FFFFFF;
+}
+
+.tag-search {
+  padding: 0.5rem 0.625rem 0.5rem 0.625rem;
+  background-color: #4180F6;
+  border: 1px solid #4C2F99;
+  -webkit-box-shadow: inset -2px -2px 0 0 #284F99, inset 2px 2px 0 0 #FFFFFF;
+          box-shadow: inset -2px -2px 0 0 #284F99, inset 2px 2px 0 0 #FFFFFF;
+  color: #FFFFFF;
+  font-size: 0.875rem;
+}
+
+body.night .tag-search {
   background-color: #2E32FB;
   border: 1px solid #4C2F99;
   -webkit-box-shadow: inset -2px -2px 0 0 #284F99, inset 2px 2px 0 0 #FFFFFF;

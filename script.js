@@ -119,17 +119,20 @@ function getSearchGifs(numeroDeGifs, searchString) {
         gifsContainer.removeChild(gifsContainer.firstChild);
     }
     
-    crearHTMLGifs(numeroDeGifs, '#search-container', 'search-results');
-    const arrDOM = document.getElementsByClassName('gif search-results');
-    const separador = document.querySelector('#separador-resultname');
-    separador.style.display = 'block';
-    separador.innerHTML = searchString + ' (resultados)';
-
     llamarApi(search, numeroDeGifs, searchString).then((res) => {
+        let nroGifsRecibidos = res.data.length;
+
+        crearHTMLGifs(nroGifsRecibidos, '#search-container', 'search-results');
+        const arrDOM = document.getElementsByClassName('gif search-results');
+        const separador = document.querySelector('#separador-resultname');
+        separador.style.display = 'block';
+        separador.innerHTML = searchString + ' (resultados)';
         
-        for(let i = 0; i < numeroDeGifs; i++){
+        for(let i = 0; i < nroGifsRecibidos; i++){
             arrDOM[i].src = res.data[i].images.downsized.url;
         }
+
+        saveSearch(searchString);
     });  
 
 }
@@ -150,6 +153,16 @@ async function getSearchAutocomplete(tag) {
     const datosJSON = await datos.json();
 
     return datosJSON;
+}
+
+function saveSearch(stringSearch) {
+    localStorage.setItem(contadorLocalStorageItem, stringSearch);
+    localStorage.contador = contadorLocalStorageItem;
+    contadorLocalStorageItem++;
+}
+
+function setTagSearch() {
+    console.log('');
 }
 
 
@@ -180,6 +193,7 @@ const btnBuscar = document.querySelector('.btn-buscar');
 const btnBuscarText = document.querySelector('.btn-buscar span');
 const btnBuscarImg = document.querySelector('.btn-buscar img');
 const form = document.querySelector('#form');
+let contadorLocalStorageItem = 0;
 
 inputBuscar.addEventListener('input', () => {
     const normalClass = 'btn gray btn-buscar ';
@@ -210,27 +224,27 @@ inputBuscar.addEventListener('input', () => {
             resultadosSugeridos[2].innerHTML = sug3;
             ventanaSugerencias.style.display = 'block';
 
-            resultadosSugeridos[1].addEventListener('click', () => {
+            resultadosSugeridos[1].onclick = () => {
                 getSearchGifs(8, sug2);
                 inputBuscar.value = sug2;
                 ventanaSugerencias.style.display = 'none';
                 
-            });
-            resultadosSugeridos[2].addEventListener('click', () => {
+            };
+            resultadosSugeridos[2].onclick = () => {
                 getSearchGifs(8, sug3);
                 inputBuscar.value = sug3;
                 ventanaSugerencias.style.display = 'none';
-            });
+            };
         });
 
         getSearchAutocomplete(inputBuscar.value).then( (res) => {
             let sug1 = res.data[0].name;
             resultadosSugeridos[0].innerHTML = sug1;
-            resultadosSugeridos[0].addEventListener('click', () => {
+            resultadosSugeridos[0].onclick = () => {
                 getSearchGifs(8, sug1);
                 inputBuscar.value = sug1;
                 ventanaSugerencias.style.display = 'none';
-            });
+            };
         });
     }
 });
@@ -259,7 +273,6 @@ btnBuscar.addEventListener('click', () => {
     
     }
 });
-
 
 
 
