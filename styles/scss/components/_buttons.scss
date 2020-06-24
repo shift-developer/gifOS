@@ -87,11 +87,14 @@
     margin-top: 4px;
     margin-left: -14px;
     color: $primary-font-day;
-    &::after{
+    &::after {
         content: '_';
         position: relative;
         right: 72px;
         top: 1px;
+    }
+    &:active {
+        opacity: 80%;
     }
 
     body.night & {

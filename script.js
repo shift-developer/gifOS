@@ -118,7 +118,6 @@ function getSearchGifs(numeroDeGifs, searchString) {
         gifsContainer.removeChild(gifsContainer.firstChild);
     }
     
-
     crearHTMLGifs(numeroDeGifs, '#search-container', 'search-results');
     const arrDOM = document.getElementsByClassName('gif search-results');
     const separador = document.querySelector('#separador-resultname');
@@ -159,10 +158,20 @@ getSugerenciasGifs('memes', 'reactions', 'cat', 'fails');
 //TENDENCIAS
 getTrendingGifs(12, '#tendencias-container'); 
 
-//CAMBIAR TEMA (agregar eventos con addeventlistener más adelante)
+//CAMBIAR TEMA 
+const dropDownBtn = document.querySelector('.dropdown-button');
+dropDownBtn.addEventListener('click', ventanaElegirTema);
+
+const dayBtn = document.querySelector('#sailor-day');
+dayBtn.addEventListener('click', setSailorDayTheme);
+
+const nightBtn = document.querySelector('#sailor-night');
+nightBtn.addEventListener('click', setSailorNightTheme);
+
+
 
 //BUSCADOR
-const sectionBuscador = document.querySelector('.container .ventana .buscador');
+const sectionBuscador = document.querySelector('#buscador');
 const inputBuscar = document.querySelector('.inputbuscar');
 const ventanaSugerencias = document.querySelector('.search-sugerencias');
 const resultadosSugeridos = document.getElementsByClassName('btn gray search-sugerencia');
@@ -188,40 +197,43 @@ inputBuscar.addEventListener('input', () => {
     }
     
     if(inputBuscar.value.length >= 3) {
-        
+
         btnBuscar.className = normalClass + 'active-buscar';
         btnBuscarText.className = 'active-text';
         btnBuscarImg.src = urlActive;
 
         getSearchSuggestions(inputBuscar.value).then( (res) => {
-            resultadosSugeridos[1].innerHTML = res.data[0].name;
-            resultadosSugeridos[2].innerHTML = res.data[1].name;
-    
+            let sug2 = res.data[0].name;
+            let sug3 = res.data[1].name;
+            resultadosSugeridos[1].innerHTML = sug2;
+            resultadosSugeridos[2].innerHTML = sug3;
             ventanaSugerencias.style.display = 'block';
-            resultadosSugeridos[1].onclick = () => {
-                getSearchGifs(8, res.data[0].name);
+
+            resultadosSugeridos[1].addEventListener('click', () => {
+                getSearchGifs(8, sug2);
                 ventanaSugerencias.style.display = 'none';
-            };
-            resultadosSugeridos[2].onclick = () => {
-                getSearchGifs(8, res.data[1].name);
+            });
+            resultadosSugeridos[2].addEventListener('click', () => {
+                getSearchGifs(8, sug3);
                 ventanaSugerencias.style.display = 'none';
-            };
+            });
         });
 
         getSearchAutocomplete(inputBuscar.value).then( (res) => {
-            resultadosSugeridos[0].innerHTML = res.data[0].name;
-            resultadosSugeridos[0].onclick = () => {
-                getSearchGifs(8, res.data[0].name);
+            let sug1 = res.data[0].name;
+            resultadosSugeridos[0].innerHTML = sug1;
+            resultadosSugeridos[0].addEventListener('click', () => {
+                getSearchGifs(8, sug1);
                 ventanaSugerencias.style.display = 'none';
-            };
+            });
         });
     }
 });
 
 
-inputBuscar.addEventListener('blur', () => {
+/*sectionBuscador.addEventListener('mouseover', () => {
     ventanaSugerencias.style.display = 'none';
-})
+})*/
 
 inputBuscar.addEventListener('keyup', (e) => {
     let keycode = e.keycode;

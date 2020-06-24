@@ -231,6 +231,10 @@ body.night .theme-selected {
   top: 1px;
 }
 
+.misguifos:active {
+  opacity: 80%;
+}
+
 body.night .misguifos {
   color: #FFFFFF;
 }
