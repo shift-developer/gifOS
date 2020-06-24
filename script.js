@@ -38,6 +38,7 @@ function getSugerenciasGifs(tag1, tag2, tag3, tag4) {
         tagGifs[i].innerHTML = '#' + arguments[i];
         buttonsVerMas[i].addEventListener('click', () => {
             getSearchGifs(8, arguments[i]);
+            inputBuscar.value = arguments[i];
         })
     }
    
@@ -211,10 +212,13 @@ inputBuscar.addEventListener('input', () => {
 
             resultadosSugeridos[1].addEventListener('click', () => {
                 getSearchGifs(8, sug2);
+                inputBuscar.value = sug2;
                 ventanaSugerencias.style.display = 'none';
+                
             });
             resultadosSugeridos[2].addEventListener('click', () => {
                 getSearchGifs(8, sug3);
+                inputBuscar.value = sug3;
                 ventanaSugerencias.style.display = 'none';
             });
         });
@@ -224,16 +228,13 @@ inputBuscar.addEventListener('input', () => {
             resultadosSugeridos[0].innerHTML = sug1;
             resultadosSugeridos[0].addEventListener('click', () => {
                 getSearchGifs(8, sug1);
+                inputBuscar.value = sug1;
                 ventanaSugerencias.style.display = 'none';
             });
         });
     }
 });
 
-
-/*sectionBuscador.addEventListener('mouseover', () => {
-    ventanaSugerencias.style.display = 'none';
-})*/
 
 inputBuscar.addEventListener('keyup', (e) => {
     let keycode = e.keycode;
