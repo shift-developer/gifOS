@@ -15,12 +15,22 @@
     box-shadow: $primary-button-shadow-day;
     color: $primary-font-day;
 
+    &:hover {
+        background-color: $primary-button-hover-day;
+    }
+
     body.night & {
         background-color: $primary-button-night;
         border: $primary-button-border-night;
         box-shadow: $primary-button-shadow-night;
         color: $primary-font-night;
     }
+
+    body.night &:hover {
+        background-color: $primary-button-hover-night;
+    }
+
+
 }
 
 //DROPDOWN BUTTON
@@ -64,6 +74,7 @@
         background-color: $elegirtema-button-selected-night;
         border: $elegirtema-button-selected-border-night;
         box-shadow: $elegirtema-button-selected-shadow-night;
+        color: $primary-font-night;
     }
 }
 
@@ -73,7 +84,8 @@
 
 //MIS GUIFOS BUTTON
 .misguifos{
-    margin-top: 0.5625rem;
+    margin-top: 4px;
+    margin-left: -14px;
     color: $primary-font-day;
     &::after{
         content: '_';

@@ -13,6 +13,10 @@
     background: #FFFFFF;
     padding: 11.5px 0px 11.5px 16px;
     width: 88.8%;
+
+    &:focus {
+        color: $primary-font-day;
+    }
 }
 
 .btn-buscar {
@@ -26,12 +30,19 @@
     margin-left: 8px;
     margin-top: 6px;
     margin-bottom: 6px;
-    span{
-        margin-left: 10px;
-        color: #B4B4B4;
-        line-height: 18px;
-    }
-  
+}
+
+.normal.text {
+    margin-left: 10px;
+    color: #B4B4B4;
+    line-height: 18px;
+}
+
+.active-buscar {
+    background-color: $primary-button-day;
+    border: $primary-button-border-day;
+    box-shadow: $primary-button-shadow-day;
+    color: $primary-font-day;
 }
 
 .search-sugerencias {

@@ -153,12 +153,20 @@ body.night .separador {
   color: #110038;
 }
 
+.primary:hover {
+  background-color: #E6BBE2;
+}
+
 body.night .primary {
-  background-color: #A72CB3;
+  background-color: #EE3EFE;
   border: 1px solid #110038;
   -webkit-box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
           box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
   color: #FFFFFF;
+}
+
+body.night .primary:hover {
+  background-color: #CE36DB;
 }
 
 .dropdown-button {
@@ -203,6 +211,7 @@ body.night .theme-selected {
   border: 1px solid rgba(51, 53, 143, 0.2);
   -webkit-box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
           box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+  color: #FFFFFF;
 }
 
 #sailor-day {
@@ -210,7 +219,8 @@ body.night .theme-selected {
 }
 
 .misguifos {
-  margin-top: 0.5625rem;
+  margin-top: 4px;
+  margin-left: -14px;
   color: #110038;
 }
 
@@ -295,11 +305,23 @@ body.night .bienvenida {
 
 .nav {
   margin-top: 0.5625rem;
-  width: 419.5px;
+  width: 430px;
+}
+
+.drop-down {
+  width: 95px;
+  height: 30px;
+  margin-top: 6px;
+  text-align: center;
 }
 
 .drop-down:hover {
   border: dotted 1px #110038;
+  margin: 5px -1px -1px -1px;
+}
+
+body.night .drop-down:hover {
+  border: dotted 1px #FFFFFF;
 }
 
 .elegir-theme {
@@ -334,6 +356,10 @@ body.night .bienvenida {
   width: 88.8%;
 }
 
+.inputbuscar:focus {
+  color: #110038;
+}
+
 .btn-buscar {
   padding-left: 0.625rem;
   padding-top: 4px;
@@ -353,10 +379,18 @@ body.night .bienvenida {
   margin-bottom: 6px;
 }
 
-.btn-buscar span {
+.normal.text {
   margin-left: 10px;
   color: #B4B4B4;
   line-height: 18px;
+}
+
+.active-buscar {
+  background-color: #F7C9F3;
+  border: 1px solid #110038;
+  -webkit-box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+  color: #110038;
 }
 
 .search-sugerencias {
@@ -411,6 +445,10 @@ body.night .bienvenida {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.imgbtncerrar {
+  margin-right: 5px;
 }
 
 #separador-resultname {

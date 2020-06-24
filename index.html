@@ -18,8 +18,8 @@
         <a href="./index.html"><img src="./assets/gifOF_logo.png" class="logo" alt=""></a>
         <nav>
             <ul class="nav">
-                <li><a class="btn primary" href="#">Crear Guifos</a></li>
-                <li class="drop-down">
+                <li><div><a class="btn primary" href="#">Crear Guifos</a></div></li>
+                <li>
                     <a class="dropdown-button" id="dropdown-button" onclick="ventanaElegirTema()">
                         <div class="btn primary">
                             <span>Elegir tema</span>
@@ -35,7 +35,7 @@
                         </div>
                     </a>
                 </li>
-                <li><a class="btn misguifos" href="#">Mis guifos</a></li>
+                <li class="drop-down"><a class="btn misguifos" href="#">Mis guifos</a></li>
             </ul>
         </nav>
     </header>
@@ -44,7 +44,7 @@
         <div class="ventana-title">Buscar</div>
         <form id="form">
             <input type="text" class="inputbuscar" placeholder="Busca gifs, hashtags, temas, busca lo que quieras…" name="search" autocomplete="off">
-            <button class="btn gray btn-buscar"><img src="/assets/lupa_inactive.svg"><span>Buscar</span></button>
+            <button class="btn gray btn-buscar"><img src="/assets/lupa_inactive.svg"><span class="normal-text">Buscar</span></button>
         </form>
         <div class="ventana search-sugerencias">
             <button class="btn gray search-sugerencia" id="resultado-sugerido">Resultado de búsqueda sugerido</button>

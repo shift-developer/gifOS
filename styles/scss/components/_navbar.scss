@@ -17,11 +17,22 @@ header, .nav {
 
 .nav{
     margin-top: 0.5625rem;
-    width: 419.5px;
+    width: 430px;
 }
 
-.drop-down:hover {
-    border: dotted 1px $primary-font-day;
+
+.drop-down {
+    width: 95px;
+    height: 30px;
+    margin-top: 6px;
+    text-align: center;
+    &:hover{
+        border: dotted 1px $primary-font-day;
+        margin: 5px -1px -1px -1px;
+    }
+    body.night &:hover{
+        border: dotted 1px $primary-font-night;
+    }
 }
 
 //ELEGIR TEMA
