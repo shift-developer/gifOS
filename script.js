@@ -83,9 +83,9 @@ function ventanaElegirTema() {
     let estado = document.querySelector('.elegir-theme').style.display;
 
     if(estado == 'none') {
-        document.querySelector('.elegir-theme').style.display = 'block';
+        estado.style.display = 'block';
     } else {
-        document.querySelector('.elegir-theme').style.display = 'none';
+        estado.style.display = 'none';
     }
 }
 

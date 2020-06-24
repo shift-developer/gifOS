@@ -19,7 +19,7 @@
         <nav>
             <ul class="nav">
                 <li><a class="btn primary" href="#">Crear Guifos</a></li>
-                <li>
+                <li class="drop-down">
                     <a class="dropdown-button" id="dropdown-button" onclick="ventanaElegirTema()">
                         <div class="btn primary">
                             <span>Elegir tema</span>
@@ -29,7 +29,7 @@
                                 <img src="./assets/dropdown.svg" alt="">
                             </span>
                         </div>
-                        <div class="ventana elegir-theme">
+                        <div class="ventana elegir-theme" style="display: none;">
                             <button class="btn themebtn theme-selected" onclick="setSailorDayTheme()" id="sailor-day">Sailor Day</button>
                             <button class="btn gray themebtn" onclick="setSailorNightTheme()" id="sailor-night">Sailor Night</button>
                         </div>

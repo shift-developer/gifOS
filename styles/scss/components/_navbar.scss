@@ -20,9 +20,12 @@ header, .nav {
     width: 419.5px;
 }
 
+.drop-down:hover {
+    border: dotted 1px $primary-font-day;
+}
+
 //ELEGIR TEMA
 .elegir-theme {
-    display: none;
     width: 150px;
     position: absolute;
     padding: 10px;
