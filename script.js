@@ -1,14 +1,14 @@
-//ENDPOINTS
+/*ENDPOINTS*/
 const trending = 'gifs/trending';
 const search = 'gifs/search';
 const random = 'gifs/random';
 
-//REQUEST PARAMETERS
+/*REQUEST PARAMETERS*/
 const limit = '&limit='; //The maximum number of objects to return. (Default: “25”)
 const q = '&q='; //Search query term or phrase.
 const tag = '&tag=' //Filters results by specified tag..
 
-//GLOBAL FUNCTIONS 
+/*GLOBAL FUNCTIONS*/ 
 async function llamarApi(endpoint, nroLimit = '', stringSearch = '', stringTag = '') {
     const API_KEY = '?api_key=CAllNkSvYhmRBlXwfjBCJcvN3CZJ69w5';
     const API_URL = 'http://api.giphy.com/v1/';
@@ -37,7 +37,7 @@ function getSugerenciasGifs(tag1, tag2, tag3, tag4) {
     for(let i = 0; i < 4; i++) {
         tagGifs[i].innerHTML = '#' + arguments[i];
         buttonsVerMas[i].addEventListener('click', () => {
-            getSearchGifs(8, arguments[i]);
+            getSearchGifs(numeroDeGifs, arguments[i]);
             inputBuscar.value = arguments[i];
         })
     }
@@ -68,7 +68,7 @@ function crearHTMLGifs(numeroDeGifs, idContainer, gifClassName) {
         containerGif.appendChild(gif);
     }
 }
-//podriamos cargar la imagen fija y dejar el hover para que el gif funcione, de ese modo cargamos más rapido y mejora el UX
+
 function getTrendingGifs(numeroDeGifs, idContainer) {
     crearHTMLGifs(numeroDeGifs, idContainer, 'tendencias');
     const arrDOM = document.getElementsByClassName('gif tendencias');
@@ -156,23 +156,72 @@ async function getSearchAutocomplete(tag) {
 }
 
 function saveSearch(stringSearch) {
-    localStorage.setItem(contadorLocalStorageItem, stringSearch);
-    localStorage.contador = contadorLocalStorageItem;
-    contadorLocalStorageItem++;
+    //función usada cuando se produce una búsqueda que agrega al storage y HTML, sólo si no se repite el tag
+    if(!elTagSeRepite(stringSearch)){
+        count = localStorage.contador;
+        count++;
+        localStorage.contador = count;
+        localStorage.setItem(count, stringSearch);
+        setTagSearch(stringSearch);
+    }
+    
 }
 
-function setTagSearch() {
-    console.log('');
+function elTagSeRepite(stringSearch) {
+    let arr = [];
+    
+    if(!localStorage.contador) {
+        localStorage.contador = 0;
+        return false;
+    } else {
+        for(let i = 1; i <= localStorage.contador; i++) {
+            arr.push(localStorage[i]);
+        }
+        if(arr.filter(tag => tag == stringSearch).length == 0) {
+            return false;
+        }
+        return true;
+    }
 }
 
+function setTagSearch(searchString) {
+    
+        if(!localStorage[searchString]) {
 
-//SUGERENCIAS
+        const tagButton = document.createElement('button');
+        tagButton.className = 'btn tag-search';
+        tagButton.innerHTML = '#' + searchString;
+        sectionTagsBuscados.appendChild(tagButton);
+
+        tagButton.onclick = () => {
+            getSearchGifs(numeroDeGifs, searchString);
+        }
+    }
+}
+
+function setLocalStorageTags() {
+    while (sectionTagsBuscados.hasChildNodes()) {  
+        sectionTagsBuscados.removeChild(sectionTagsBuscados.firstChild);
+    }
+    
+    for(let i = 1; i <= localStorage.contador; i++) {
+    
+        if(localStorage.contador > 0) {
+            setTagSearch(localStorage[i]);
+        }
+    }
+}
+
+/*NÚMERO DE GIFS*/
+const numeroDeGifs = 8;
+
+/*SUGERENCIAS*/
 getSugerenciasGifs('memes', 'reactions', 'cat', 'fails');
 
-//TENDENCIAS
+/*TENDENCIAS*/
 getTrendingGifs(12, '#tendencias-container'); 
 
-//CAMBIAR TEMA 
+/*CAMBIAR TEMA */
 const dropDownBtn = document.querySelector('.dropdown-button');
 dropDownBtn.addEventListener('click', ventanaElegirTema);
 
@@ -184,7 +233,7 @@ nightBtn.addEventListener('click', setSailorNightTheme);
 
 
 
-//BUSCADOR
+/*BUSCADOR*/
 const sectionBuscador = document.querySelector('#buscador');
 const inputBuscar = document.querySelector('.inputbuscar');
 const ventanaSugerencias = document.querySelector('.search-sugerencias');
@@ -193,7 +242,6 @@ const btnBuscar = document.querySelector('.btn-buscar');
 const btnBuscarText = document.querySelector('.btn-buscar span');
 const btnBuscarImg = document.querySelector('.btn-buscar img');
 const form = document.querySelector('#form');
-let contadorLocalStorageItem = 0;
 
 inputBuscar.addEventListener('input', () => {
     const normalClass = 'btn gray btn-buscar ';
@@ -225,13 +273,13 @@ inputBuscar.addEventListener('input', () => {
             ventanaSugerencias.style.display = 'block';
 
             resultadosSugeridos[1].onclick = () => {
-                getSearchGifs(8, sug2);
+                getSearchGifs(numeroDeGifs, sug2);
                 inputBuscar.value = sug2;
                 ventanaSugerencias.style.display = 'none';
                 
             };
             resultadosSugeridos[2].onclick = () => {
-                getSearchGifs(8, sug3);
+                getSearchGifs(numeroDeGifs, sug3);
                 inputBuscar.value = sug3;
                 ventanaSugerencias.style.display = 'none';
             };
@@ -241,7 +289,7 @@ inputBuscar.addEventListener('input', () => {
             let sug1 = res.data[0].name;
             resultadosSugeridos[0].innerHTML = sug1;
             resultadosSugeridos[0].onclick = () => {
-                getSearchGifs(8, sug1);
+                getSearchGifs(numeroDeGifs, sug1);
                 inputBuscar.value = sug1;
                 ventanaSugerencias.style.display = 'none';
             };
@@ -256,7 +304,7 @@ inputBuscar.addEventListener('keyup', (e) => {
 
     if(keycode == '13' && stringSearch.lenght > 0){
         ventanaSugerencias.style.display = 'none';
-        getSearchGifs(8, stringSearch);
+        getSearchGifs(numeroDeGifs, stringSearch);
         
     }
 });
@@ -269,10 +317,17 @@ btnBuscar.addEventListener('click', () => {
     let stringSearch = inputBuscar.value;
     if(stringSearch.length > 0){
     ventanaSugerencias.style.display = 'none';
-    getSearchGifs(8, stringSearch);
+    getSearchGifs(numeroDeGifs, stringSearch);
     
     }
 });
+
+
+/*TAGS YA BUSCADOS*/
+const sectionTagsBuscados = document.querySelector('.tags-buscados');
+setLocalStorageTags(); //al reiniciar la página evalúa los tags el localStorage
+
+
 
 
 

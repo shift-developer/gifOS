@@ -5,6 +5,9 @@
     display: block;
     text-decoration: none;
     cursor: pointer;
+    &:focus {
+        outline: none;
+    }
 }
 
 //PRIMARY BUTTON
@@ -127,6 +130,7 @@
     box-shadow: $vermas-button-shadow-day;
     color: $ventana-color-font;
     font-size: 0.875rem;
+    margin-left: 8px;
 
     body.night & {
         background-color: $vermas-button-background-night;

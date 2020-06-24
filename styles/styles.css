@@ -137,6 +137,12 @@ body.night .separador {
 
 .tags-buscados {
   margin-top: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  overflow: hidden;
 }
 
 /*BUTTON*/
@@ -146,6 +152,10 @@ body.night .separador {
   display: block;
   text-decoration: none;
   cursor: pointer;
+}
+
+.btn:focus {
+  outline: none;
 }
 
 .primary {
@@ -271,6 +281,7 @@ body.night .vermas {
           box-shadow: inset -2px -2px 0 0 #284F99, inset 2px 2px 0 0 #FFFFFF;
   color: #FFFFFF;
   font-size: 0.875rem;
+  margin-left: 8px;
 }
 
 body.night .tag-search {
