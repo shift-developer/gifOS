@@ -15,7 +15,9 @@
     width: 88.8%;
 
     &:focus {
+        outline: none;
         color: $primary-font-day;
+        caret-color: #4180F6;
     }
 }
 
@@ -30,12 +32,25 @@
     margin-left: 8px;
     margin-top: 6px;
     margin-bottom: 6px;
+
+    & span {
+        margin-left: 10px;
+        line-height: 18px;
+    }
 }
 
-.normal.text {
-    margin-left: 10px;
+.normal-text {
     color: #B4B4B4;
-    line-height: 18px;
+    body.night & {
+        color: #8F8F8F;
+    }
+}
+
+.active-text {
+    color: $primary-font-day;
+    body.night & {
+        color: $primary-font-night;
+    }
 }
 
 .active-buscar {
@@ -43,6 +58,13 @@
     border: $primary-button-border-day;
     box-shadow: $primary-button-shadow-day;
     color: $primary-font-day;
+
+    body.night & {
+        background-color: $primary-button-night;
+        border: $primary-button-border-night;
+        box-shadow: $primary-button-shadow-night;
+        color: $primary-font-night;
+    }
 }
 
 .search-sugerencias {

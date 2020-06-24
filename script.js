@@ -167,23 +167,32 @@ const inputBuscar = document.querySelector('.inputbuscar');
 const ventanaSugerencias = document.querySelector('.search-sugerencias');
 const resultadosSugeridos = document.getElementsByClassName('btn gray search-sugerencia');
 const btnBuscar = document.querySelector('.btn-buscar');
-const btnBuscarText = document.querySelector('.btn buscar span');
+const btnBuscarText = document.querySelector('.btn-buscar span');
 const btnBuscarImg = document.querySelector('.btn-buscar img');
 const form = document.querySelector('#form');
 
 inputBuscar.addEventListener('input', () => {
     const normalClass = 'btn gray btn-buscar ';
-    const normalClassText = 'normal-text';
     const urlInactive = '/assets/lupa_inactive.svg';
-    const urlActive = '/assets/lupa_light.svg';
+    let urlActive = '/assets/lupa.svg';
 
+    if (document.body.className == 'night'){
+        urlActive = '/assets/lupa_light.svg';
+    }
+    
     if(inputBuscar.value.length < 3) {
         ventanaSugerencias.style.display = 'none';
         btnBuscar.className = normalClass;
+        btnBuscarText.className = 'normal-text';
+        btnBuscarImg.src = urlInactive;
     }
     
     if(inputBuscar.value.length >= 3) {
-        btnBuscar.className = normalClass + 'active-buscar'
+        
+        btnBuscar.className = normalClass + 'active-buscar';
+        btnBuscarText.className = 'active-text';
+        btnBuscarImg.src = urlActive;
+
         getSearchSuggestions(inputBuscar.value).then( (res) => {
             resultadosSugeridos[1].innerHTML = res.data[0].name;
             resultadosSugeridos[2].innerHTML = res.data[1].name;

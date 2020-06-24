@@ -357,7 +357,9 @@ body.night .drop-down:hover {
 }
 
 .inputbuscar:focus {
+  outline: none;
   color: #110038;
+  caret-color: #4180F6;
 }
 
 .btn-buscar {
@@ -379,10 +381,25 @@ body.night .drop-down:hover {
   margin-bottom: 6px;
 }
 
-.normal.text {
+.btn-buscar span {
   margin-left: 10px;
-  color: #B4B4B4;
   line-height: 18px;
+}
+
+.normal-text {
+  color: #B4B4B4;
+}
+
+body.night .normal-text {
+  color: #8F8F8F;
+}
+
+.active-text {
+  color: #110038;
+}
+
+body.night .active-text {
+  color: #FFFFFF;
 }
 
 .active-buscar {
@@ -391,6 +408,14 @@ body.night .drop-down:hover {
   -webkit-box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
           box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
   color: #110038;
+}
+
+body.night .active-buscar {
+  background-color: #EE3EFE;
+  border: 1px solid #110038;
+  -webkit-box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
+          box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
+  color: #FFFFFF;
 }
 
 .search-sugerencias {
