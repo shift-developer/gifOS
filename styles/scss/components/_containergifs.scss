@@ -53,17 +53,20 @@
     background-color: $ventana-background-day;
     padding: 4px;
     &::after {
-        content: '#asdasd #asdasd';
+        content: attr(data-content);
+        overflow: hidden;
         font-family: $font;
         color: $ventana-color-font;
-        font-size: 0.9rem;
+        font-size: 15px;
         font-weight: 700;
         background-image: $gradient-day;
         display: block;
         position: relative;
+        line-height: 17px;
         left: 1px;
         bottom: 22px;
         width: 288px;
+        height: 15px;
         text-align: left;
         text-transform: lowercase;
         padding: 3px 2px;

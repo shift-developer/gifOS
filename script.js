@@ -83,6 +83,8 @@ function getTrendingGifs(numeroDeGifs, idContainer) {
     llamarApi(trending, numeroDeGifs).then((res) => {
         for(let i = 0; i < numeroDeGifs; i++){
             arrDOM[i].src = res.data[i].images.downsized.url;
+            let title = transformInHashtags(res.data[i].title);
+            arrDOM[i].parentNode.setAttribute('data-content', title);
         }
     });  
 }
@@ -137,11 +139,21 @@ function getSearchGifs(numeroDeGifs, searchString) {
         
         for(let i = 0; i < nroGifsRecibidos; i++){
             arrDOM[i].src = res.data[i].images.downsized.url;
+
+            let title = transformInHashtags(res.data[i].title);
+            arrDOM[i].parentNode.setAttribute('data-content', title);
         }
 
         saveSearch(searchString);
     });  
 
+}
+
+function transformInHashtags(title) {
+    let string = title.replace(/\s+/g, ' #');
+    let hashtag = '#';
+    string = hashtag + string;
+    return string;
 }
 
 async function getSearchSuggestions(tag) {
@@ -365,6 +377,7 @@ for(let i = 0; i < 4; i++) {
         arrSugerenciaBtn[i].className += 'btn vermas';
     }
 }
+
 
 
 
