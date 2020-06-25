@@ -145,6 +145,12 @@ body.night .separador {
   overflow: hidden;
 }
 
+.logoconflecha {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+}
+
 /*BUTTON*/
 .btn {
   font-family: "Chakra Petch", sans-serif;
@@ -397,6 +403,12 @@ body.night .drop-down:hover {
 .themebtn {
   width: 100%;
   text-align: start;
+}
+
+.arrow {
+  position: absolute;
+  -webkit-transform: translate(-30px, 10px);
+          transform: translate(-30px, 10px);
 }
 
 .buscador form {

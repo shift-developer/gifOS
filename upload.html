@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear gifOS</title>
+    <link rel="stylesheet" type="text/css" href="./styles/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="full bienvenida">
+        ¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número de visitas: 12.765.803
+    </div>
+
+    <header class="container logoconflecha">
+        <img src="./assets/arrow.svg" class="arrow" alt="arrow back">
+        <a href="./index.html"><img src="./assets/gifOF_logo.png" class="logo" alt="logo"></a>
+    </header>
+
+    <section class="container creacion-gif">
+        <div class="ventana permiso-comenzar">
+            <div class="ventana-title">Crear Guifos</div>
+            <div class="imagencontexto-permiso">
+                <img src="./assets/window_img.png" alt="window-image" class="window-img">
+                <div class="permiso-text-container">
+                    <p>Aquí podrás crear tus propios guifos</p>
+                    <p>Crear tu <span class="text-bold">guifo</span> es muy fácil, graba cualquier imagen con tu cámara y obtén guifos personzalizados. Los pasos para crear tu guifo son:
+                    </p>
+                    <ol>
+                        <li>Dar permisos de acceso a la cámara (sólo por el tiempo de uso)</li>
+                        <li>Capturar tu momento guifo</li>
+                        <li>Revisar el momento</li>
+                        <li>Listo para subir y compartir!</li>
+                    </ol>
+                    <p>¿Quieres comenzar a crear tu <span class="text-bold">guifo</span> ahora?</p>
+                </div>
+            </div>
+            <div class="btn-permiso-container">
+                <button id="permiso-cancelar">Cancelar</button>
+                <button id="permiso-comenzar">Comenzar</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mis-guifos" id="misguifos">
+        <h2 class="separador">Mis guifos:</h2>
+
+        <div class="gifs-container">
+    </section>
+
+    <script src="./scripts/creargif.js"></script>
+</body>
+</html>

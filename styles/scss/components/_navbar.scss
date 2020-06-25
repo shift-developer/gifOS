@@ -47,3 +47,8 @@ header, .nav {
     width: 100%;
     text-align: start;
 }
+
+.arrow {
+    position: absolute;
+    transform: translate(-30px, 10px);
+}
