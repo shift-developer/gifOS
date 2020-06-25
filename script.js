@@ -340,6 +340,22 @@ const sectionTagsBuscados = document.querySelector('.tags-buscados');
 setLocalStorageTags(); //al reiniciar la página evalúa los tags el localStorage
 
 
+/* EVENTOS CONTAINER GIFS */
+const arrSugerenciaContainer = document.getElementsByClassName('sugerencia-gif');
+const arrSugerenciaImg = document.getElementsByClassName('gif sugerencias');
+const arrSugerenciaBtn = document.getElementsByClassName('btn vermas');
+
+for(let i = 0; i < 4; i++) {
+    arrSugerenciaContainer[i].onmouseover = () => {
+        arrSugerenciaImg[i].className += ' hover-dotted-img';
+        arrSugerenciaBtn[i].className += ' hover-dotted';
+    }
+    arrSugerenciaContainer[i].onmouseout = () => {
+        arrSugerenciaImg[i].className += 'gif sugerencias';
+        arrSugerenciaBtn[i].className += 'btn vermas';
+    }
+}
+
 
 
 

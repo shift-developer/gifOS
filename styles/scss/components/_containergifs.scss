@@ -33,3 +33,13 @@
 #separador-resultname {
     display: none;
 }
+
+.hover-dotted {
+    outline: 1px dotted $primary-font-day;
+    outline-offset: -4px;
+}
+
+.hover-dotted-img {
+    outline: 1px dotted $primary-font-day;
+    outline-offset: -3px;    
+}

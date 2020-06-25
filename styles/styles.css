@@ -553,5 +553,15 @@ body.night .active-buscar {
   display: none;
 }
 
+.hover-dotted {
+  outline: 1px dotted #110038;
+  outline-offset: -4px;
+}
+
+.hover-dotted-img {
+  outline: 1px dotted #110038;
+  outline-offset: -3px;
+}
+
 /* crear gif */
 /*# sourceMappingURL=styles.css.map */
