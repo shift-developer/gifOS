@@ -58,6 +58,7 @@ function getSugerenciasGifs(tag1, tag2, tag3, tag4) {
 
 function crearHTMLGifs(numeroDeGifs, idContainer, gifClassName) {
     const container = document.querySelector(idContainer);
+    //gifClassName puede recibir 'tendencias' o 'search-results'
 
     for(let i = 0; i < numeroDeGifs; i++) {
         let containerGif = document.createElement('div');
@@ -66,6 +67,12 @@ function crearHTMLGifs(numeroDeGifs, idContainer, gifClassName) {
         let gif = document.createElement('img');
         gif.className = 'gif sinventana ' + gifClassName;
         containerGif.appendChild(gif);
+        containerGif.onmouseover = () => {
+            containerGif.className += ' hover-gifsearch';
+        };
+        containerGif.onmouseout = () => {
+            containerGif.className = 'archivo-gif';
+        };
     }
 }
 
@@ -157,6 +164,7 @@ async function getSearchAutocomplete(tag) {
 
 function saveSearch(stringSearch) {
     //función usada cuando se produce una búsqueda que agrega al storage y HTML, sólo si no se repite el tag
+
     if(!elTagSeRepite(stringSearch)){
         count = localStorage.contador;
         count++;
@@ -185,7 +193,8 @@ function elTagSeRepite(stringSearch) {
 }
 
 function setTagSearch(searchString) {
-    
+        //setear en el html los tags ya buscados
+
         if(!localStorage[searchString]) {
 
         const tagButton = document.createElement('button');
@@ -203,7 +212,8 @@ function setLocalStorageTags() {
     while (sectionTagsBuscados.hasChildNodes()) {  
         sectionTagsBuscados.removeChild(sectionTagsBuscados.firstChild);
     }
-    
+
+    //iterar los elementos del localStorage con la funcion setTagSearch, lo usamos al reiniciar el index
     for(let i = 1; i <= localStorage.contador; i++) {
     
         if(localStorage.contador > 0) {
@@ -219,7 +229,7 @@ const numeroDeGifs = 8;
 getSugerenciasGifs('memes', 'reactions', 'cat', 'fails');
 
 /*TENDENCIAS*/
-getTrendingGifs(12, '#tendencias-container'); 
+getTrendingGifs(4, '#tendencias-container'); 
 
 /*CAMBIAR TEMA */
 const dropDownBtn = document.querySelector('.dropdown-button');

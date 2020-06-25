@@ -18,6 +18,8 @@
 
 
 .archivo-gif {
+    height: 288px;
+    width: 298px;
     margin-bottom: 16px;
 }
 
@@ -42,4 +44,37 @@
 .hover-dotted-img {
     outline: 1px dotted $primary-font-day;
     outline-offset: -3px;    
+}
+
+.hover-gifsearch {
+    outline: 1px dotted $primary-font-day;
+    outline-offset: -9px;
+    box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+    background-color: $ventana-background-day;
+    padding: 4px;
+    &::after {
+        content: '#asdasd #asdasd';
+        font-family: $font;
+        color: $ventana-color-font;
+        font-size: 0.9rem;
+        font-weight: 700;
+        background-image: $gradient-day;
+        display: block;
+        position: relative;
+        left: 1px;
+        bottom: 22px;
+        width: 288px;
+        text-align: left;
+        text-transform: lowercase;
+        padding: 3px 2px;
+    }
+
+    body.night & {
+        box-shadow: $ventana-boxshadow-night;
+        background-color: $ventana-background-night;
+    }
+
+    body.night &::after {
+        background-image: $gradient-night;
+    }
 }
