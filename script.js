@@ -241,7 +241,7 @@ const numeroDeGifs = 8;
 getSugerenciasGifs('memes', 'reactions', 'cat', 'fails');
 
 /*TENDENCIAS*/
-getTrendingGifs(12, '#tendencias-container'); 
+getTrendingGifs(8, '#tendencias-container'); 
 
 /*CAMBIAR TEMA */
 const dropDownBtn = document.querySelector('.dropdown-button');
@@ -277,7 +277,7 @@ const btnBuscarText = document.querySelector('.btn-buscar span');
 const btnBuscarImg = document.querySelector('.btn-buscar img');
 const form = document.querySelector('#form');
 
-inputBuscar.addEventListener('keyup', () => {
+inputBuscar.addEventListener('input', (e) => {
     const normalClass = 'btn gray btn-buscar ';
     const urlInactive = '/assets/lupa_inactive.svg';
     let urlActive = '/assets/lupa.svg';
@@ -339,7 +339,10 @@ inputBuscar.addEventListener('keyup', (e) => {
     if(keycode == '13' && stringSearch.lenght > 0){
         ventanaSugerencias.style.display = 'none';
         getSearchGifs(numeroDeGifs, stringSearch);
-        
+    }
+
+    if(stringSearch < 2) {
+        ventanaSugerencias.style.display = 'none';
     }
 });
 
