@@ -1,1 +1,54 @@
 /* crear gif */
+
+.imagencontexto-permiso {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 93px 28px 25px;
+}
+
+.permiso-text-container {
+    & p {
+        font-family: $font;
+        font-size: 14px;
+        line-height: 20px;
+        width: 518px;
+        margin-bottom: 8px;
+    }
+    & .texttitle {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 17px;
+    }
+    & span {
+        font-weight: 900;
+        font-style: italic;
+    }
+    
+
+    .list-pasos span {
+        font-style: normal;
+        margin-right: 3px;
+    }
+}
+
+.window-img {
+    display: block;
+    width: 32px;
+    height: 32px;
+}
+
+.btn-permiso-container {
+    display: flex;
+    margin: 0px 36px 36px 344px;
+    justify-content: space-between;
+}
+
+#permiso-cancelar {
+    padding: 9px 38.875px 9px 38.875px;
+}
+
+#permiso-comenzar {
+    padding: 9px 34.42px 9px 34.42px;
+}
+

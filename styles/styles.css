@@ -151,6 +151,15 @@ body.night .separador {
           justify-content: start;
 }
 
+.creacion-gif {
+  margin-top: 75px;
+}
+
+.permiso-comenzar {
+  width: 684px;
+  margin: auto;
+}
+
 /*BUTTON*/
 .btn {
   font-family: "Chakra Petch", sans-serif;
@@ -333,7 +342,7 @@ body.night .tag-search {
 }
 
 .secondary {
-  padding: 0.5625rem 0.84375rem 0.5625rem 0.84375rem;
+  padding: 0.5625rem 1.5625rem 0.5625rem 1.5625rem;
   background-color: #FFF4FD;
   border: 1px solid #110038;
   -webkit-box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
@@ -619,4 +628,62 @@ body.night .hover-gifsearch::after {
 }
 
 /* crear gif */
+.imagencontexto-permiso {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 30px 93px 28px 25px;
+}
+
+.permiso-text-container p {
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  width: 518px;
+  margin-bottom: 8px;
+}
+
+.permiso-text-container .texttitle {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  margin-bottom: 17px;
+}
+
+.permiso-text-container span {
+  font-weight: 900;
+  font-style: italic;
+}
+
+.permiso-text-container .list-pasos span {
+  font-style: normal;
+  margin-right: 3px;
+}
+
+.window-img {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+
+.btn-permiso-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0px 36px 36px 344px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#permiso-cancelar {
+  padding: 9px 38.875px 9px 38.875px;
+}
+
+#permiso-comenzar {
+  padding: 9px 34.42px 9px 34.42px;
+}
 /*# sourceMappingURL=styles.css.map */
