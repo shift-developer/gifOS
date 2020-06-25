@@ -229,7 +229,7 @@ const numeroDeGifs = 8;
 getSugerenciasGifs('memes', 'reactions', 'cat', 'fails');
 
 /*TENDENCIAS*/
-getTrendingGifs(4, '#tendencias-container'); 
+getTrendingGifs(12, '#tendencias-container'); 
 
 /*CAMBIAR TEMA */
 const dropDownBtn = document.querySelector('.dropdown-button');
@@ -265,7 +265,7 @@ const btnBuscarText = document.querySelector('.btn-buscar span');
 const btnBuscarImg = document.querySelector('.btn-buscar img');
 const form = document.querySelector('#form');
 
-inputBuscar.addEventListener('input', () => {
+inputBuscar.addEventListener('keyup', () => {
     const normalClass = 'btn gray btn-buscar ';
     const urlInactive = '/assets/lupa_inactive.svg';
     let urlActive = '/assets/lupa.svg';
