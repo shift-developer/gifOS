@@ -20,6 +20,8 @@
 
     &:hover {
         background-color: $primary-button-hover-day;
+        outline: 1px dotted $primary-font-day;
+        outline-offset: -4px;
     }
 
     body.night & {
@@ -37,8 +39,14 @@
 }
 
 //DROPDOWN BUTTON
-.dropdown-button{
+.dropdown-button {
     display: flex;
+}
+
+.hover-dropdown {
+    background-color: $primary-button-hover-day;
+    outline: 1px dotted $primary-font-day;
+    outline-offset: -4px;
 }
 
 //DROPDOWN ICON
@@ -57,6 +65,12 @@
     border: $gray-button-border;
     box-shadow: $gray-button-shadow;
     color: $primary-font-day;
+
+    &:hover {
+        background-color: $gray-button-hover-day;
+        outline: 1px dotted $primary-font-day;
+        outline-offset: -4px;
+    }
 
     body.night &{
         background-color: $gray-button-night;
@@ -116,6 +130,12 @@
     position: absolute;
     transform: translate(14px, -45px);
 
+    &:hover {
+        background-color: #3A72DB;
+        outline: 1px dotted $primary-font-day;
+        outline-offset: -4px;
+    }
+
     body.night & {
         background-color: $vermas-button-background-night;
         border: $vermas-button-border-night;
@@ -131,6 +151,12 @@
     color: $ventana-color-font;
     font-size: 0.875rem;
     margin-left: 8px;
+
+    &:hover {
+        background-color: #3A72DB;
+        outline: 1px dotted $primary-font-day;
+        outline-offset: -4px;
+    }
 
     body.night & {
         background-color: $vermas-button-background-night;

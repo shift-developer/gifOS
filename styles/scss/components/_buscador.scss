@@ -33,6 +33,11 @@
     margin-top: 6px;
     margin-bottom: 6px;
 
+    &:hover {
+        outline: none;
+        background-color: $gray-button-day;
+    }
+
     & span {
         margin-left: 10px;
         line-height: 18px;
@@ -58,6 +63,12 @@
     border: $primary-button-border-day;
     box-shadow: $primary-button-shadow-day;
     color: $primary-font-day;
+
+    &:hover {
+        background-color: $primary-button-hover-day;
+        outline: 1px dotted $primary-font-day;
+        outline-offset: -4px;
+    }
 
     body.night & {
         background-color: $primary-button-night;

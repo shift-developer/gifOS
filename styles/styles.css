@@ -169,6 +169,8 @@ body.night .separador {
 
 .primary:hover {
   background-color: #E6BBE2;
+  outline: 1px dotted #110038;
+  outline-offset: -4px;
 }
 
 body.night .primary {
@@ -189,6 +191,12 @@ body.night .primary:hover {
   display: flex;
 }
 
+.hover-dropdown {
+  background-color: #E6BBE2;
+  outline: 1px dotted #110038;
+  outline-offset: -4px;
+}
+
 .v-icon {
   padding: 6.6px 12px 6.6px 12px;
   display: inline;
@@ -203,6 +211,12 @@ body.night .primary:hover {
   -webkit-box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
           box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
   color: #110038;
+}
+
+.gray:hover {
+  background-color: #E6E6E6;
+  outline: 1px dotted #110038;
+  outline-offset: -4px;
 }
 
 body.night .gray {
@@ -266,6 +280,12 @@ body.night .misguifos {
           transform: translate(14px, -45px);
 }
 
+.vermas:hover {
+  background-color: #3A72DB;
+  outline: 1px dotted #110038;
+  outline-offset: -4px;
+}
+
 body.night .vermas {
   background-color: #2E32FB;
   border: 1px solid #4C2F99;
@@ -282,6 +302,12 @@ body.night .vermas {
   color: #FFFFFF;
   font-size: 0.875rem;
   margin-left: 8px;
+}
+
+.tag-search:hover {
+  background-color: #3A72DB;
+  outline: 1px dotted #110038;
+  outline-offset: -4px;
 }
 
 body.night .tag-search {
@@ -417,6 +443,11 @@ body.night .drop-down:hover {
   margin-bottom: 6px;
 }
 
+.btn-buscar:hover {
+  outline: none;
+  background-color: #F0F0F0;
+}
+
 .btn-buscar span {
   margin-left: 10px;
   line-height: 18px;
@@ -444,6 +475,12 @@ body.night .active-text {
   -webkit-box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
           box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
   color: #110038;
+}
+
+.active-buscar:hover {
+  background-color: #E6BBE2;
+  outline: 1px dotted #110038;
+  outline-offset: -4px;
 }
 
 body.night .active-buscar {

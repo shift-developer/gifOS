@@ -223,6 +223,9 @@ getTrendingGifs(12, '#tendencias-container');
 
 /*CAMBIAR TEMA */
 const dropDownBtn = document.querySelector('.dropdown-button');
+const textDropBtn = document.querySelector('#text-dropbtn');
+const iconDropBtn = document.querySelector('.v-icon');
+
 dropDownBtn.addEventListener('click', ventanaElegirTema);
 
 const dayBtn = document.querySelector('#sailor-day');
@@ -230,6 +233,15 @@ dayBtn.addEventListener('click', setSailorDayTheme);
 
 const nightBtn = document.querySelector('#sailor-night');
 nightBtn.addEventListener('click', setSailorNightTheme);
+
+dropDownBtn.addEventListener('mouseover', () => {
+    textDropBtn.className += ' hover-dropdown';
+    iconDropBtn.className += ' hover-dropdown';
+});
+dropDownBtn.addEventListener('mouseout', () => {
+    textDropBtn.className = 'btn primary';
+    iconDropBtn.className = 'btn primary v-icon';
+})
 
 
 
