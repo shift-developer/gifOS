@@ -160,6 +160,10 @@ body.night .separador {
   margin: auto;
 }
 
+.hidden {
+  display: none;
+}
+
 /*BUTTON*/
 .btn {
   font-family: "Chakra Petch", sans-serif;
