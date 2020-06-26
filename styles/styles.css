@@ -249,6 +249,10 @@ body.night .gray {
           box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
 }
 
+.theme-selected::first-letter {
+  text-decoration: underline;
+}
+
 body.night .theme-selected {
   background-color: #2E32FB;
   border: 1px solid rgba(51, 53, 143, 0.2);
@@ -355,6 +359,12 @@ body.night .secondary {
   border: 1px solid #B4B4B4;
   -webkit-box-shadow: inset -1px -1px 0 0 #5C5C5C, inset 1px 1px 0 0 #FFF4FD;
           box-shadow: inset -1px -1px 0 0 #5C5C5C, inset 1px 1px 0 0 #FFF4FD;
+}
+
+.capturar-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 /* navbar */
@@ -685,5 +695,9 @@ body.night .hover-gifsearch::after {
 
 #permiso-comenzar {
   padding: 9px 34.42px 9px 34.42px;
+}
+
+.captura-container {
+  width: 860px;
 }
 /*# sourceMappingURL=styles.css.map */

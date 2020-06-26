@@ -87,6 +87,10 @@
     border: $elegirtema-button-selected-border-day;
     box-shadow: $elegirtema-button-selected-shadow-day;
 
+    &::first-letter {
+        text-decoration: underline;
+    }
+
     body.night & {
         background-color: $elegirtema-button-selected-night;
         border: $elegirtema-button-selected-border-night;
@@ -189,6 +193,10 @@
     }
 }
 
+
+.capturar-btn {
+    display: flex;
+}
 
 
 

@@ -17,7 +17,7 @@
         <a href="./index.html"><img src="./assets/gifOF_logo.png" class="logo" alt="logo"></a>
     </header>
 
-    <section class="container creacion-gif">
+    <section class="container creacion-gif" style="display: none;">
         <div class="ventana permiso-comenzar">
             <div class="ventana-title">Crear Guifos</div>
             <div class="imagencontexto-permiso">
@@ -44,14 +44,20 @@
     </section>
 
     <section class="container captura">
-        <div class="captura-container">
+        <div class="ventana captura-container">
             <div class="ventana-title">
-                <p></p>
+                <p>Un Chequeo Antes de Empezar</p>
                 <img src="./assets/button3.svg" alt="icon" class="imgbtncerrar">
             </div>
-            <video>
-                
-            </video>
+            <div>
+                <video></video>
+            </div>
+            <div>
+                <a class="btn capturar-btn">
+                    <img src="./assets/camera.svg" alt="camera" class="btn primary camera-img ">
+                    <span class="btn primary">Capturar</span>
+                </a>
+            </div>
 
         </div>
     </section>
@@ -63,5 +69,6 @@
     </section>
 
     <script src="./scripts/creargif.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/RecordRTC/5.5.8/RecordRTC.js" type="text/javascript"></script>
 </body>
 </html>
