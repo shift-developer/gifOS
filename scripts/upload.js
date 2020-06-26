@@ -17,7 +17,6 @@ const progressBar = document.getElementsByClassName('progress-bar-item');
 const uploadMessage = document.getElementById('upload-msg');
 const download = document.getElementById('download');
 const copy = document.getElementById('copy');
-const nav = document.getElementById('nav');
 const main = document.getElementById('main');
 
 //definimos el recorder
@@ -117,7 +116,7 @@ function stopRecordingCallback() {
 
     recorder.destroy();
     recorder = null;
-    
+
 }
 
 start.addEventListener('click', () => {
