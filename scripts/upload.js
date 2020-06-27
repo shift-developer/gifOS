@@ -25,6 +25,12 @@ let recorder;
 //tambien definimos una variable recording para el manejo del timer
 let recording = false;
 
+//barra de progreso
+let counter = 0;
+
+
+/*---------------FUNCIONES GLOBALES----------------*/
+
 //obtener video y grabación
 function getStreamAndRecord() {
 
@@ -83,6 +89,28 @@ function getStreamAndRecord() {
     });
 }
 
+function getDuration() {
+    let seconds = 0;
+    let minutes = 0;
+    let timer = setInterval(() => {
+        if (recording) {
+            if (seconds < 60) {
+                if (seconds <= 9) {
+                    seconds = '0' + seconds;
+                }
+                document.getElementById('timer').innerHTML = `00:00:0${minutes}:${seconds}`;
+                seconds++;
+            } else {
+                minutes++;
+                seconds = 0;
+            }
+            
+        } else {
+            clearInterval(timer); //si no estoy grabando los limpia
+        }
+    }, 1000);
+}
+
 function stopRecordingCallback() {
 
     recorder.camera.stop();
@@ -119,43 +147,6 @@ function stopRecordingCallback() {
 
 }
 
-start.addEventListener('click', () => {
-    //cambiamos de modal pre a modal grabacion
-    document.getElementById('pre-upload-tex').classList.add('hidden');
-    document.getElementById('pre-upload-video').classList.remove('hidden');
-
-    getStreamAndRecord();
-});
-
-restart.addEventListener('click', () => {
-    location.reload();
-    getStreamAndRecord();
-})
-
-function getDuration() {
-    let seconds = 0;
-    let minutes = 0;
-    let timer = setInterval(() => {
-        if (recording) {
-            if (seconds < 60) {
-                if (seconds <= 9) {
-                    seconds = '0' + seconds;
-                }
-                document.getElementById('timer').innerHTML = `00:00:0${minutes}:${seconds}`;
-                seconds++;
-            } else {
-                minutes++;
-                seconds = 0;
-            }
-            
-        } else {
-            clearInterval(timer); //si no estoy grabando los limpia
-        }
-    }, 1000);
-}
-
-//Barra de progreso
-let counter = 0;
 function animateProgressbar(bar) {
     setInterval( () => {
 
@@ -191,7 +182,6 @@ function uploadGif(gif) {
         console.log('Error: ', error);
     });
 }
-
 
 function getGifDetails(id) {
 
@@ -239,6 +229,21 @@ function getMyGifs() {
     }
     return items;
 }
+
+/*---------------EVENTOS-----------------*/
+
+start.addEventListener('click', () => {
+    //cambiamos de modal pre a modal grabacion
+    document.getElementById('pre-upload-tex').classList.add('hidden');
+    document.getElementById('pre-upload-video').classList.remove('hidden');
+
+    getStreamAndRecord();
+});
+
+restart.addEventListener('click', () => {
+    location.reload();
+    getStreamAndRecord();
+})
 
 window.addEventListener('load', () => {
     const localGifs = getMyGifs();

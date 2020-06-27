@@ -160,6 +160,11 @@ body.night .separador {
   margin: auto;
 }
 
+.capturando {
+  width: 860px;
+  margin: auto;
+}
+
 .hidden {
   display: none;
 }
