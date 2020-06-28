@@ -835,10 +835,12 @@ body.night .hover-gifsearch::after {
 }
 
 .video-upload-message {
+  padding-top: 139px;
   font-family: "Chakra Petch", sans-serif;
   color: #110038;
   line-height: 22px;
   text-align: center;
+  margin: auto;
 }
 
 .video-upload-message p {
@@ -854,13 +856,15 @@ body.night .hover-gifsearch::after {
 }
 
 video {
-  width: 100%;
-  height: 100%;
+  padding: 2px;
+  width: 830px;
+  height: 436px;
 }
 
 #preview {
-  width: 100%;
-  height: 100%;
+  padding: 2px;
+  width: 834px;
+  height: 436px;
 }
 
 .error-msg {

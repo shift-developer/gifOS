@@ -2,7 +2,7 @@
 /*API*/
 const APIKEY = '?api_key=CAllNkSvYhmRBlXwfjBCJcvN3CZJ69w5';
 const API_BASE_URL = 'https://api.giphy.com/v1/gifs/';
-const API_UPLOAD = 'https://upload.giphy.com/v1/gifs/';
+const API_UPLOAD = 'https://upload.giphy.com/v1/gifs';
 
 /*DOM*/
 const start = document.getElementById('permiso-comenzar'); //btn comenzar
@@ -24,25 +24,32 @@ let recording = false; //para el manejo del timer
 let contador = 0;
 
 /*------------------------- GLOBAL FUNCTIONS -------------------------*/ 
-function getStreamAndRecord() {
 
-    navigator.mediaDevices.getUserMedia({
-        audio: false,
-        video: {
-            height: { max: 480 }
-        }
-    }) 
-    .then( (stream) => {
-        video.srcObject = stream;
+async function getStream() {
+    let stream = await navigator.mediaDevices.getUserMedia({
+            audio: false,
+            video: {
+                height: 436,
+                width: 830
+            }
+        });
+   
+    return stream;
+}
+
+function streamAndRecord() {
+
+    getStream().then( (streaming) => {
+        video.srcObject = streaming;
         video.play();
 
         record.addEventListener('click', () => {
             recording = !recording;
-            document.getElementById('camera-button').src = '../assets/combined_shape.svg';
+            document.getElementById('camera-button').src = '../assets/recording.svg';
 
             if (recording === true) {
                 this.disabled = true; //deshabilitamos el boton record
-                recorder = RecordRTC(stream, 
+                recorder = RecordRTC(streaming, 
                     {
                         type: 'gif',
                         frameRate: 1,
@@ -59,8 +66,7 @@ function getStreamAndRecord() {
                 record.innerHTML = 'Listo';
                 stop.classList.add('capturandobtn');
 
-                //cortamos el stream de la camara
-                recorder.camera = stream;
+                recorder.camera = streaming;
 
             } else {
                 this.disabled = true;
@@ -96,22 +102,8 @@ function getDuration() {
 function stopRecordingCallback() {
 
     recorder.camera.stop();
-
-    //le damos el formato  requerido a la data que vamos a enviar como body de nuestro 
-    //POST REQUEST
-    //Creamos un form data al que le anexamos el archivo gif pasado a blob, con la función getBlob
     let form = new FormData();
-    //le ponemos 'file' porque en la doc de giphy lo pide como ese parámetro, y aclara que tiene 
-    //que ser un string binario
-    form.append('file', recorder.getBlob(), 'test-gif');
-
-    upload.addEventListener('click', () => {
-        uploadMessage.classList.remove('hidden');
-        preview.classList.add('hidden');
-        animateProgressbar(progressBar);
-        //acá se pasa el form a la función upload gif
-        uploadGif(form);
-    });
+    form.append('file', recorder.getBlob(), 'prueba-gif');
 
     //aca obtenemos el blob con la variable global recorder, que ya tiene el gif guardado para la preview
     objectURL = URL.createObjectURL(recorder.getBlob());
@@ -123,45 +115,53 @@ function stopRecordingCallback() {
     document.getElementById('video-record-buttons').classList.add('hidden');
     document.getElementById('video-upload-buttons').classList.remove('hidden');
 
-
-    recorder.destroy();
-    recorder = null;
-
+    upload.addEventListener('click', () => {
+        uploadMessage.classList.remove('hidden');
+        preview.classList.add('hidden');
+        animateProgressbar(progressBar);
+        //acá se pasa el form a la función upload gif
+        uploadGif(form).then( res => {
+            console.log(res.status);
+            if (res.meta.status != 200 ) {
+                uploadMessage.innerHTML = `<p class="error-msg">Hubo un error subiendo tu Guifo</p>`;
+            } else {
+                console.log(res.data);
+                console.log(res.data.id);
+                uploadMessage.classList.add('hidden');
+                document.getElementById('share-modal-wrapper').classList.remove('hidden');
+                const gifId = res.data.id;
+                getGifDetails(gifId);
+                recorder.destroy();
+                recorder = null;
+            }
+        })
+        .catch(error => {
+            uploadMessage.innerHTML = `<p class="error-msg">Hubo un error subiendo tu Guifo</p>`;
+            console.log('Error: ', error);
+        });
+    });
 }
 
 function animateProgressbar(bar) {
     setInterval( () => {
 
-        if(counter < bar.length) {
-            bar.item(counter).classList.toggle('progress-bar-item-active');
-            counter++;
+        if(contador < bar.length) {
+            bar.item(contador).classList.toggle('progress-bar-item-active');
+            contador++;
         } else {
-            counter = 0;
+            contador = 0;
         }
     }, 200);
 }
 
-function uploadGif(gif) {
+async function uploadGif(gif) {
+    const url = API_UPLOAD + APIKEY;
+    const CONFIG_UPLOAD = {method: 'POST', mode:'cors', body: gif}
     
-    //formateamos el post según las necesidades particulares de la api de giphy
-    fetch(API_UPLOAD + APIKEY, {
-        method: 'POST', //or 'PUT'
-        body: gif,
-    }).then( res => {
-        if (res.status != 200 ) {
-            uploadMessage.innerHTML = `<h3 class="error-msg">Hubo un error subiendo tu Guifo</h3>`;
-        }
-        return res.json();
-    }).then(data => {
-        uploadMessage.classList.add('hidden');
-        document.getElementById('share-modal-wrapper').classList.remove('hidden');
-        const gifId = data.data.id;
-        getGifDetails(gifId);
-    })
-    .catch(error => {
-        uploadMessage.innerHTML = `<h3 class="error-msg">Hubo un error subiendo tu Guifo</h3>`;
-        console.log('Error: ', error);
-    });
+    const apiUpload = await fetch(url, CONFIG_UPLOAD);
+    const apiUploadJson = await apiUpload.json();
+    console.log(apiUploadJson);
+    return apiUploadJson;
 }
 
 function getGifDetails(id) {
@@ -219,13 +219,13 @@ start.addEventListener('click', () => {
     document.querySelector('#pre-upload-text').classList.add('hidden');
     document.querySelector('#pre-upload-video').classList.remove('hidden');
 
-    getStreamAndRecord();
+    streamAndRecord();
 });
 
 /*BOTÓN REPETIR CAPTURA*/
 restart.addEventListener('click', () => {
     location.reload();
-    getStreamAndRecord();
+    streamAndRecord();
 })
 
 /*MIS GUIFOS */
