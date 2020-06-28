@@ -1,27 +1,31 @@
+/*----------------------------------- CONSTANTS -----------------------------------*/ 
+/*API*/
+const API_KEY = '?api_key=CAllNkSvYhmRBlXwfjBCJcvN3CZJ69w5';
+const API_URL = 'http://api.giphy.com/v1/';
+
 /*ENDPOINTS*/
-const trending = 'gifs/trending';
-const search = 'gifs/search';
-const random = 'gifs/random';
+const TRENDING = 'gifs/trending';
+const SEARCH = 'gifs/search';
+const RANDOM = 'gifs/random';
 
 /*REQUEST PARAMETERS*/
-const limit = '&limit='; //The maximum number of objects to return. (Default: “25”)
-const q = '&q='; //Search query term or phrase.
-const tag = '&tag=' //Filters results by specified tag..
+const LIMIT_QUERY = '&limit='; //The maximum number of objects to return. (Default: “25”)
+const SEARCH_QUERY = '&q='; //Search query term or phrase.
+const TAG_QUERY = '&tag=' //Filters results by specified tag..
 
-/*GLOBAL FUNCTIONS*/ 
+
+/*------------------------------- GLOBAL FUNCTIONS ---------------------------------*/ 
 async function llamarApi(endpoint, nroLimit = '', stringSearch = '', stringTag = '') {
-    const API_KEY = '?api_key=CAllNkSvYhmRBlXwfjBCJcvN3CZJ69w5';
-    const API_URL = 'http://api.giphy.com/v1/';
+    
     let url = `${API_URL}${endpoint}${API_KEY}`;
-
     //-> FALTA AGREGAR TRY CATCH PARA EL MANEJO DE ERRORES
-    if(endpoint == trending || endpoint == search) {
-     url = url + limit + nroLimit;
-        if(endpoint == search) {
-            url = url + q + stringSearch;
+    if(endpoint == TRENDING || endpoint == SEARCH) {
+     url = url + LIMIT_QUERY + nroLimit;
+        if(endpoint == SEARCH) {
+            url = url + SEARCH_QUERY + stringSearch;
         }
-    } else if (endpoint == random){
-        url = url + tag + stringTag;
+    } else if (endpoint == RANDOM){
+        url = url + TAG_QUERY + stringTag;
     } 
 
     const datos = await fetch(url);
@@ -42,18 +46,63 @@ function getSugerenciasGifs(tag1, tag2, tag3, tag4) {
         })
     }
    
-    llamarApi(random, '', '', tag1).then((res) => {
+    llamarApi(RANDOM, '', '', tag1).then((res) => {
         sugerenciasGifs[0].src = res.data.images.downsized.url;
     })
-    llamarApi(random, '', '', tag2).then((res) => {
+    llamarApi(RANDOM, '', '', tag2).then((res) => {
         sugerenciasGifs[1].src = res.data.images.downsized.url;
     })
-    llamarApi(random, '', '', tag3).then((res) => {
+    llamarApi(RANDOM, '', '', tag3).then((res) => {
         sugerenciasGifs[2].src = res.data.images.downsized.url;
     })
-    llamarApi(random, '', '', tag4).then((res) => {
+    llamarApi(RANDOM, '', '', tag4).then((res) => {
         sugerenciasGifs[3].src = res.data.images.downsized.url;
     })
+}
+
+function getTrendingGifs(numeroDeGifs, idContainer) {
+    crearHTMLGifs(numeroDeGifs, idContainer, 'tendencias');
+    const arrDOM = document.getElementsByClassName('gif tendencias');
+
+    llamarApi(TRENDING, numeroDeGifs).then((res) => {
+        for(let i = 0; i < numeroDeGifs; i++){
+            arrDOM[i].src = res.data[i].images.downsized.url;
+            let title = transformInHashtags(res.data[i].title);
+            arrDOM[i].parentNode.setAttribute('data-content', title);
+        }
+    });  
+}
+
+function getSearchGifs(numeroDeGifs, searchString) {
+    const sugerenciasSection = document.querySelector('#sugerencias');
+    const tendenciasSection = document.querySelector('#tendencias');
+    sugerenciasSection.style.display = 'none';
+    tendenciasSection.style.display= 'none';
+    const gifsContainer = document.querySelector('#search-container');
+
+    while (gifsContainer.hasChildNodes()) {  
+        gifsContainer.removeChild(gifsContainer.firstChild);
+    }
+    
+    llamarApi(SEARCH, numeroDeGifs, searchString).then((res) => {
+        let nroGifsRecibidos = res.data.length;
+
+        crearHTMLGifs(nroGifsRecibidos, '#search-container', 'search-results');
+        const arrDOM = document.getElementsByClassName('gif search-results');
+        const separador = document.querySelector('#separador-resultname');
+        separador.style.display = 'block';
+        separador.innerHTML = searchString + ' (resultados)';
+        
+        for(let i = 0; i < nroGifsRecibidos; i++){
+            arrDOM[i].src = res.data[i].images.downsized.url;
+
+            let title = transformInHashtags(res.data[i].title);
+            arrDOM[i].parentNode.setAttribute('data-content', title);
+        }
+
+        saveSearch(searchString);
+    });  
+
 }
 
 function crearHTMLGifs(numeroDeGifs, idContainer, gifClassName) {
@@ -76,79 +125,6 @@ function crearHTMLGifs(numeroDeGifs, idContainer, gifClassName) {
     }
 }
 
-function getTrendingGifs(numeroDeGifs, idContainer) {
-    crearHTMLGifs(numeroDeGifs, idContainer, 'tendencias');
-    const arrDOM = document.getElementsByClassName('gif tendencias');
-
-    llamarApi(trending, numeroDeGifs).then((res) => {
-        for(let i = 0; i < numeroDeGifs; i++){
-            arrDOM[i].src = res.data[i].images.downsized.url;
-            let title = transformInHashtags(res.data[i].title);
-            arrDOM[i].parentNode.setAttribute('data-content', title);
-        }
-    });  
-}
-
-function ventanaElegirTema() {
-    let estado = document.querySelector('.elegir-theme');
-
-    if(estado.style.display == 'none') {
-        estado.style.display = 'block';
-    } else {
-        estado.style.display = 'none';
-    }
-}
-
-function setSailorDayTheme() {
-    document.body.classList.remove('night');
-    document.querySelector('.logo').src = './assets/gifOF_logo.png';
-
-    const sailorClass = 'btn themebtn';
-    document.querySelector('#sailor-day').className = sailorClass + ' theme-selected';
-    document.querySelector('#sailor-night').className = sailorClass + ' gray';
-}
-
-function setSailorNightTheme() {
-    document.body.className = 'night';
-    document.querySelector('.logo').src = './assets/gifOF_logo_dark.png';
-
-    const sailorClass = 'btn themebtn';
-    document.querySelector('#sailor-day').className = sailorClass + ' gray';
-    document.querySelector('#sailor-night').className = sailorClass + ' theme-selected';
-}
-
-function getSearchGifs(numeroDeGifs, searchString) {
-    const sugerenciasSection = document.querySelector('#sugerencias');
-    const tendenciasSection = document.querySelector('#tendencias');
-    sugerenciasSection.style.display = 'none';
-    tendenciasSection.style.display= 'none';
-    const gifsContainer = document.querySelector('#search-container');
-
-    while (gifsContainer.hasChildNodes()) {  
-        gifsContainer.removeChild(gifsContainer.firstChild);
-    }
-    
-    llamarApi(search, numeroDeGifs, searchString).then((res) => {
-        let nroGifsRecibidos = res.data.length;
-
-        crearHTMLGifs(nroGifsRecibidos, '#search-container', 'search-results');
-        const arrDOM = document.getElementsByClassName('gif search-results');
-        const separador = document.querySelector('#separador-resultname');
-        separador.style.display = 'block';
-        separador.innerHTML = searchString + ' (resultados)';
-        
-        for(let i = 0; i < nroGifsRecibidos; i++){
-            arrDOM[i].src = res.data[i].images.downsized.url;
-
-            let title = transformInHashtags(res.data[i].title);
-            arrDOM[i].parentNode.setAttribute('data-content', title);
-        }
-
-        saveSearch(searchString);
-    });  
-
-}
-
 function transformInHashtags(title) {
     let string = title.replace(/\s+/g, ' #');
     let hashtag = '#';
@@ -156,26 +132,9 @@ function transformInHashtags(title) {
     return string;
 }
 
-async function getSearchSuggestions(tag) {
-    const API_KEY = '?api_key=CAllNkSvYhmRBlXwfjBCJcvN3CZJ69w5';
-    const url = 'http://api.giphy.com/v1/tags/related/' + '{' + tag + '}' + API_KEY;
-    const datos = await fetch(url);
-    const datosJSON = await datos.json();
-
-    return datosJSON;
-}
-
-async function getSearchAutocomplete(tag) {
-    const API_KEY = '?api_key=CAllNkSvYhmRBlXwfjBCJcvN3CZJ69w5';
-    const url = 'http://api.giphy.com/v1/gifs/search/tags' + API_KEY + q + tag;
-    const datos = await fetch(url);
-    const datosJSON = await datos.json();
-
-    return datosJSON;
-}
-
 function saveSearch(stringSearch) {
-    //función usada cuando se produce una búsqueda que agrega al storage y HTML, sólo si no se repite el tag
+    /*función usada cuando se produce una búsqueda que agrega al storage y HTML, 
+    sólo si no se repite el tag*/
 
     if(!elTagSeRepite(stringSearch)){
         count = localStorage.contador;
@@ -205,17 +164,17 @@ function elTagSeRepite(stringSearch) {
 }
 
 function setTagSearch(searchString) {
-        //setear en el html los tags ya buscados
+    //setear en el html los tags ya buscados
 
-        if(!localStorage[searchString]) {
+    if(!localStorage[searchString]) {
 
-        const tagButton = document.createElement('button');
-        tagButton.className = 'btn tag-search';
-        tagButton.innerHTML = '#' + searchString;
-        sectionTagsBuscados.appendChild(tagButton);
+    const tagButton = document.createElement('button');
+    tagButton.className = 'btn tag-search';
+    tagButton.innerHTML = '#' + searchString;
+    sectionTagsBuscados.appendChild(tagButton);
 
-        tagButton.onclick = () => {
-            getSearchGifs(numeroDeGifs, searchString);
+    tagButton.onclick = () => {
+        getSearchGifs(numeroDeGifs, searchString);
         }
     }
 }
@@ -225,7 +184,8 @@ function setLocalStorageTags() {
         sectionTagsBuscados.removeChild(sectionTagsBuscados.firstChild);
     }
 
-    //iterar los elementos del localStorage con la funcion setTagSearch, lo usamos al reiniciar el index
+    /*iterar los elementos del localStorage con la funcion setTagSearch, 
+    la llamamos al reiniciar el index*/
     for(let i = 1; i <= localStorage.contador; i++) {
     
         if(localStorage.contador > 0) {
@@ -234,16 +194,76 @@ function setLocalStorageTags() {
     }
 }
 
-/*NÚMERO DE GIFS*/
-const numeroDeGifs = 8;
+async function getSearchSuggestions(tag) { 
+    const url = 'http://api.giphy.com/v1/tags/related/' + '{' + tag + '}' + API_KEY;
+    const datos = await fetch(url);
+    const datosJSON = await datos.json();
 
-/*SUGERENCIAS*/
-getSugerenciasGifs('memes', 'reactions', 'cat', 'fails');
+    return datosJSON;
+}
 
-/*TENDENCIAS*/
-getTrendingGifs(8, '#tendencias-container'); 
+async function getSearchAutocomplete(tag) {
+    const url = 'http://api.giphy.com/v1/gifs/search/tags' + API_KEY + SEARCH_QUERY + tag;
+    const datos = await fetch(url);
+    const datosJSON = await datos.json();
 
-/*CAMBIAR TEMA */
+    return datosJSON;
+}
+
+
+function ventanaElegirTema() {
+    let estado = document.querySelector('.elegir-theme');
+
+    if(estado.style.display == 'none') {
+        estado.style.display = 'block';
+    } else {
+        estado.style.display = 'none';
+    }
+}
+
+function setSailorDayTheme() {
+    document.body.classList.remove('night');
+    document.querySelector('.logo').src = './assets/gifOF_logo.png';
+
+    const sailorClass = 'btn themebtn';
+    document.querySelector('#sailor-day').className = sailorClass + ' theme-selected';
+    document.querySelector('#sailor-night').className = sailorClass + ' gray';
+}
+
+function setSailorNightTheme() {
+    document.body.className = 'night';
+    document.querySelector('.logo').src = './assets/gifOF_logo_dark.png';
+
+    const sailorClass = 'btn themebtn';
+    document.querySelector('#sailor-day').className = sailorClass + ' gray';
+    document.querySelector('#sailor-night').className = sailorClass + ' theme-selected';
+}
+
+
+
+
+
+
+
+
+/*------------------------------- EVENTS AND FUNCTIONS CALLS -------------------------------*/ 
+/*NUMBER OF GIFS*/
+let numeroDeGifs = 8; //number of results in search
+let numeroDeTrendingGifs = 8; //number of results in trending
+
+/*SUGGESTED TAGS*/
+let sugTag1 = 'memes';
+let sugTag2 = 'reactions';
+let sugTag3 = 'cat';
+let sugTag4 = 'fails';
+
+/*SUGGESTIONS*/
+getSugerenciasGifs(sugTag1, sugTag2, sugTag3, sugTag4); 
+
+/*TRENDING*/
+getTrendingGifs(numeroDeTrendingGifs, '#tendencias-container'); 
+
+/*THEME CHANGE */
 const dropDownBtn = document.querySelector('.dropdown-button');
 const textDropBtn = document.querySelector('#text-dropbtn');
 const iconDropBtn = document.querySelector('.v-icon');
@@ -266,8 +286,7 @@ dropDownBtn.addEventListener('mouseout', () => {
 })
 
 
-
-/*BUSCADOR*/
+/*SEARCH BAR*/
 const sectionBuscador = document.querySelector('#buscador');
 const inputBuscar = document.querySelector('.inputbuscar');
 const ventanaSugerencias = document.querySelector('.search-sugerencias');
@@ -360,12 +379,12 @@ btnBuscar.addEventListener('click', () => {
 });
 
 
-/*TAGS YA BUSCADOS*/
+/*SEARCHED TAGS*/
 const sectionTagsBuscados = document.querySelector('.tags-buscados');
 setLocalStorageTags(); //al reiniciar la página evalúa los tags el localStorage
 
 
-/* EVENTOS CONTAINER GIFS */
+/*CONTAINER GIF EVENTS */
 const arrSugerenciaContainer = document.getElementsByClassName('sugerencia-gif');
 const arrSugerenciaImg = document.getElementsByClassName('gif sugerencias');
 const arrSugerenciaBtn = document.getElementsByClassName('btn vermas');

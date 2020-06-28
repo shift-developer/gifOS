@@ -19,12 +19,12 @@
 
     <section class="container creacion-gif">
 
-        <div class="ventana permiso-comenzar">
+        <div class="ventana permiso-comenzar" id="ventana-crearguifos">
 
-            <div class="permiso-comenzar">
+            <div class="permiso-comenzar" id="pre-upload-text">
 
                 <div class="ventana-title">Crear Guifos</div>
-                <div class="imagencontexto-permiso" id="pre-upload-text">
+                <div class="imagencontexto-permiso">
 
                     <img src="./assets/window_img.png" alt="window-image" class="window-img">
 
@@ -59,8 +59,8 @@
                     <video></video>
                     <img class="video-preview hidden" id="preview">
                     <div class="video-upload-message hidden" id="upload-msg">
-                        <p>Estamos subiendo tu guifo<p>
-                        <span>Esto puede tomar algunos minutos</span>
+                        <img src="./assets/globe_img.png" alt="globe_img" class="globeimg">
+                        <p>Estamos subiendo tu guifo...<p>
                         <div class="progress-bar">
                             <div class="progress-bar-item"></div>
                             <div class="progress-bar-item"></div>
@@ -77,22 +77,36 @@
                             <div class="progress-bar-item"></div>
                             <div class="progress-bar-item"></div>
                             <div class="progress-bar-item"></div>
+                            <div class="progress-bar-item"></div>
+                            <div class="progress-bar-item"></div>
+                            <div class="progress-bar-item"></div>
+                            <div class="progress-bar-item"></div>
+                            <div class="progress-bar-item"></div>
+                            <div class="progress-bar-item"></div>
+                            <div class="progress-bar-item"></div>
+                            <div class="progress-bar-item"></div>
                         </div>
+                        <span>Tiempo restante: <span class="line-through">38 años</span> algunos minutos</span>
                     </div>
                 </div>
                 <div class="record-container">
                     <div id="timer" class="timer-container"></div>
                     <div class="record-button-container" id="video-record-buttons">
-                        <div class="btn primary" id="stop">
+                        <div class="btn primary btn-img" id="stop">
                             <img src="./assets/camera.svg" id="camera-button">
                         </div>
-                        <div class="btn primary" id="record">Capturar</div>
+                        <div class="btn primary btn-text" id="record">Capturar</div>
                     </div>
+                    <div class="record-button-container video-uploadbtn hidden" id="video-upload-buttons">
+                        <div class="btn secondary" id="restart">Repetir Captura</div>
+                        <div class="btn primary" id="upload">Subir guifo</div>
+                    </div>
+
                 </div>
-            </div>
+            </div>  
         </div>
 
-        <div class="share-container hidden" id="share-modal-wrapper">
+        <div class="ventana share-container hidden" id="share-modal-wrapper">
 
             <div class="ventana-title">
                 <span>Guifo subido con éxito</span>
@@ -105,12 +119,12 @@
                     <img src="" id="share-modal-preview">
                 </div>
     
-                <div>
-                    <p>Guifo creado con éxito</p>
-                    <div class="button button-inactive share-button" id="copy">Copiar enlace Guifo</div>
+                <div class="share-btns">
+                    <p class="text-bold">Guifo creado con éxito</p>
+                    <div class="btn secondary share-button" id="copy">Copiar enlace Guifo</div>
                     <span id="link-success" class="hidden">Enlace copiado!</span>
-                    <div class="btn share-button"><a id="download" target="_blank">Descargar Guifo</a></div>
-                    <div class="btn share-button" id="embed">Embeber Guifo</div>
+                    <div class="btn secondary share-button"><a id="download" target="_blank">Descargar Guifo</a></div>
+                    <div class="btn secondary share-button" id="embed">Embeber Guifo</div>
                 </div>
     
             </div>

@@ -170,12 +170,17 @@
 }
 
 //CAPTURANDO BUTTON
-.capturando {
-    padding: 0.5625rem 3.343rem 0.5625rem 3.343rem;
+.capturandobtn {
     background-color: $capturando-background;
     border: $capturando-border;
     color: $ventana-color-font;
     box-shadow: $capturando-shadow;
+
+    &:hover {
+        background-color: $capturando-background;
+        outline: 1px dotted $primary-font-day;
+        outline-offset: -4px;
+    }
 }
 
 //SECONDARY BUTTON
@@ -186,6 +191,13 @@
     box-shadow: $secondary-button-shadow-day;
     color: $primary-font-day;
 
+    &:hover {
+        background-color: #F0E5EE ;
+        box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+        outline: 1px dotted $primary-font-day;
+        outline-offset: -4px;
+    }
+
     body.night & {
         background-color: $secondary-button-background-night;
         border: $secondary-button-border-night;
@@ -194,9 +206,7 @@
 }
 
 
-.capturar-btn {
-    display: flex;
-}
+
 
 
 
