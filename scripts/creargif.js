@@ -45,10 +45,12 @@ function streamAndRecord() {
 
         record.addEventListener('click', () => {
             recording = !recording;
+            document.getElementById('timer').innerHTML = 'Prepárate...'
             document.getElementById('camera-button').src = '../assets/recording.svg';
 
             if (recording === true) {
                 this.disabled = true; //deshabilitamos el boton record
+
                 recorder = RecordRTC(streaming, 
                     {
                         type: 'gif',
@@ -70,7 +72,7 @@ function streamAndRecord() {
 
             } else {
                 this.disabled = true;
-                recorder.stopRecording(stopRecordingCallback);
+                recorder.stopRecording(previewAndUpload);
                 recording = false;
             }
         });
@@ -99,7 +101,7 @@ function getDuration() {
     }, 1000);
 }
 
-function stopRecordingCallback() {
+function previewAndUpload() {
 
     recorder.camera.stop();
     let form = new FormData();
@@ -121,13 +123,14 @@ function stopRecordingCallback() {
         animateProgressbar(progressBar);
         //acá se pasa el form a la función upload gif
         uploadGif(form).then( res => {
-            console.log(res.status);
+            
             if (res.meta.status != 200 ) {
                 uploadMessage.innerHTML = `<p class="error-msg">Hubo un error subiendo tu Guifo</p>`;
             } else {
                 console.log(res.data);
                 console.log(res.data.id);
                 uploadMessage.classList.add('hidden');
+                ventanaCrearGuifos.classList.add('hidden');
                 document.getElementById('share-modal-wrapper').classList.remove('hidden');
                 const gifId = res.data.id;
                 getGifDetails(gifId);
@@ -160,44 +163,48 @@ async function uploadGif(gif) {
     
     const apiUpload = await fetch(url, CONFIG_UPLOAD);
     const apiUploadJson = await apiUpload.json();
-    console.log(apiUploadJson);
+
     return apiUploadJson;
+}
+
+async function getGif(id) {
+    const url = API_BASE_URL + id + APIKEY;
+    const apiRes = await fetch(url);
+    const apiResJson = await apiRes.json();
+
+    return apiResJson;
 }
 
 function getGifDetails(id) {
 
-    fetch(API_BASE_URL + id + APIKEY)
-        .then( (response) => {
-            return response.json();
-        }) .then( (data) => {
-            const gifURL = data.data.url;
-            localStorage.setItem('gif' + data.data.id, JSON.stringify(data));
+    getGif(id).then( (res) => {
+        const gifURL = res.data.url;
+        localStorage.setItem('gif' + res.data.id, JSON.stringify(res));
 
-            /*Seteamos el DOM para mostrar nuestro modal de succes*/
-            document.getElementById('share-modal-preview').src = data.data.images.fixed_height.url;
-            const copyModal = document.getElementById('copy-success');
-            preview.classList.remove('hidden');
-            main.classList.add('gray');
-            nav.classList.add('gray');
+        /*Seteamos el DOM para mostrar nuestro modal de succes*/
+        document.getElementById('share-modal-preview').src = res.data.images.fixed_height.url;
+        const copyModal = document.getElementById('copy-success');
+        preview.classList.remove('hidden');
 
-            download.href = gifURL;
+        download.href = gifURL;
 
-            copy.addEventListener('click', async () => {
-                await navigator.clipboard.writeText(gifUrl);
-                copyModal.innerHTML = 'Link copiado con éxito!';
-                copyModal.classList.remove('hidden');
-                setTimeout(() => {copyModal.classList.add('hidden') }, 500);
-            })
+        copy.addEventListener('click', () => {
+            navigator.clipboard.writeText(gifUrl);
+            copyModal.innerHTML = 'Link copiado con éxito!';
+            copyModal.classList.remove('hidden');
+            setTimeout(() => {copyModal.classList.add('hidden') }, 500);
+        });
 
-            document.getElementById('finish').addEventListener('click', () => {
-                location.reload();
-            })
-        }) .catch( (error) => {
-                return error;  
+        document.getElementById('finish').addEventListener('click', () => {
+            location.reload();
+        });
+
+    }) .catch( (error) => {
+            console.log(error);  
         });
 }
 
-function getMyGifs() {
+function getMyGifsUrlArray() {
     let items = [];
     for (let i = 0; i < localStorage.length; i++) {
         let item = localStorage.getItem(localStorage.key(i));
@@ -230,20 +237,26 @@ restart.addEventListener('click', () => {
 
 /*MIS GUIFOS */
 window.addEventListener('load', () => {
-    const localGifs = getMyGifs();
+    const localGifs = getMyGifsUrlArray();
+    const container = document.querySelector('#results');
 
     localGifs.forEach(item => {
-        const img = document.createElement('img');
-        img.src = item;
-        img.classList.add('results-thumb');
-        document.getElementById('results').appendChild(img);
+        let containerGif = document.createElement('div');
+        containerGif.className = 'archivo-gif miguifo';
+        container.appendChild(containerGif);
+        let gif = document.createElement('img');
+        gif.className = 'gif sinventana';
+        gif.src = item;
+        containerGif.appendChild(gif);
     })
 })
 
-getMyGifs();
+getMyGifsUrlArray();
 
 document.getElementById('share-done').addEventListener('click', () => {
     ventanaCrearGuifos.classList.remove('captura-container');
     location.reload();
 });
+
+
 
