@@ -97,6 +97,7 @@ function getDuration() {
             
         } else {
             clearInterval(timer); //si no estoy grabando los limpia
+            document.getElementById('timer').innerHTML = '';
         }
     }, 1000);
 }
@@ -178,7 +179,7 @@ async function getGif(id) {
 function getGifDetails(id) {
 
     getGif(id).then( (res) => {
-        const gifURL = res.data.url;
+        const gifURL = 'https://media2.giphy.com/media/' + res.data.id + '/giphy.gif';
         localStorage.setItem('gif' + res.data.id, JSON.stringify(res));
 
         /*Seteamos el DOM para mostrar nuestro modal de succes*/
@@ -189,7 +190,7 @@ function getGifDetails(id) {
         download.href = gifURL;
 
         copy.addEventListener('click', () => {
-            navigator.clipboard.writeText(gifUrl);
+            navigator.clipboard.writeText(res.data.url);
             copyModal.innerHTML = 'Link copiado con éxito!';
             copyModal.classList.remove('hidden');
             setTimeout(() => {copyModal.classList.add('hidden') }, 500);

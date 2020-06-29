@@ -963,6 +963,15 @@ video {
           justify-content: start;
 }
 
+#copy-success {
+  color: #110038;
+  font-size: 22px;
+  font-family: "Chakra Petch", sans-serif;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  font-weight: 900;
+}
+
 .hidden {
   display: none;
 }

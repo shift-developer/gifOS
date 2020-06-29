@@ -258,6 +258,15 @@ video {
     justify-content: start;
 }
 
+#copy-success {
+    color: $primary-font-day;
+    font-size: 22px;
+    font-family: $font;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    font-weight: 900;
+}
+
 .hidden {
     display: none;
 }   
