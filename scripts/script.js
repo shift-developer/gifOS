@@ -100,6 +100,13 @@ function getSearchGifs(numeroDeGifs, searchString) {
             arrDOM[i].parentNode.setAttribute('data-content', title);
         }
 
+        btnBuscar.classList.add('busqueda-on');
+        btnBuscarText.classList.add('active-text');
+        if(localStorage.themeSelected == 'Sailor Night') {
+            btnBuscarImg.src = './assets/lupa_light.svg'
+        } else {
+            btnBuscarImg.src = './assets/lupa.svg'
+        }
         saveSearch(searchString);
     });  
 
@@ -175,6 +182,7 @@ function setTagSearch(searchString) {
 
     tagButton.onclick = () => {
         getSearchGifs(numeroDeGifs, searchString);
+        inputBuscar.value = searchString;
         }
     }
 }
@@ -228,6 +236,8 @@ function setSailorDayTheme() {
     const sailorClass = 'btn themebtn';
     document.querySelector('#sailor-day').className = sailorClass + ' theme-selected';
     document.querySelector('#sailor-night').className = sailorClass + ' gray';
+
+    localStorage.setItem('themeSelected', 'Sailor Day');
 }
 
 function setSailorNightTheme() {
@@ -237,13 +247,21 @@ function setSailorNightTheme() {
     const sailorClass = 'btn themebtn';
     document.querySelector('#sailor-day').className = sailorClass + ' gray';
     document.querySelector('#sailor-night').className = sailorClass + ' theme-selected';
+    localStorage.setItem('themeSelected', 'Sailor Night');
 }
 
-
-
-
-
-
+function getMyGifsUrlArray() {
+    let items = [];
+    for (let i = 0; i < localStorage.length; i++) {
+        let item = localStorage.getItem(localStorage.key(i));
+        
+        if(item.includes('data')) {
+            itemJson = JSON.parse(item);
+            items.push(itemJson.data.images.downsized.url);
+        }
+    }
+    return items;
+}
 
 
 /*------------------------------- EVENTS AND FUNCTIONS CALLS -------------------------------*/ 
@@ -252,21 +270,33 @@ let numeroDeGifs = 8; //number of results in search
 let numeroDeTrendingGifs = 8; //number of results in trending
 
 /*SUGGESTED TAGS*/
+const tagsSection = document.querySelector('#tagbuscados')
 let sugTag1 = 'memes';
 let sugTag2 = 'reactions';
 let sugTag3 = 'cat';
 let sugTag4 = 'fails';
 
 /*SUGGESTIONS*/
+const sugerenciasSection = document.querySelector('#sugerencias');
 getSugerenciasGifs(sugTag1, sugTag2, sugTag3, sugTag4); 
 
 /*TRENDING*/
+const tendenciasSection = document.querySelector('#tendencias');
 getTrendingGifs(numeroDeTrendingGifs, '#tendencias-container'); 
 
 /*THEME CHANGE */
 const dropDownBtn = document.querySelector('.dropdown-button');
 const textDropBtn = document.querySelector('#text-dropbtn');
 const iconDropBtn = document.querySelector('.v-icon');
+
+window.addEventListener('load', () => {
+    
+    if(!localStorage.themeSelected) {
+        localStorage.setItem('themeSelected', 'Sailor Day');
+    } else if(localStorage.themeSelected == 'Sailor Night') {
+        setSailorNightTheme();
+    }
+});
 
 dropDownBtn.addEventListener('click', ventanaElegirTema);
 
@@ -277,12 +307,12 @@ const nightBtn = document.querySelector('#sailor-night');
 nightBtn.addEventListener('click', setSailorNightTheme);
 
 dropDownBtn.addEventListener('mouseover', () => {
-    textDropBtn.className += ' hover-dropdown';
-    iconDropBtn.className += ' hover-dropdown';
+    textDropBtn.classList.add('hover-dropdown');
+    iconDropBtn.classList.add('hover-dropdown');
 });
 dropDownBtn.addEventListener('mouseout', () => {
-    textDropBtn.className = 'btn primary';
-    iconDropBtn.className = 'btn primary v-icon';
+    textDropBtn.classList.remove('hover-dropdown');
+    iconDropBtn.classList.remove('hover-dropdown');
 })
 
 
@@ -295,14 +325,19 @@ const btnBuscar = document.querySelector('.btn-buscar');
 const btnBuscarText = document.querySelector('.btn-buscar span');
 const btnBuscarImg = document.querySelector('.btn-buscar img');
 const form = document.querySelector('#form');
+const searchSection = document.querySelector('#search-section');
 
 inputBuscar.addEventListener('input', (e) => {
     const normalClass = 'btn gray btn-buscar ';
-    const urlInactive = '/assets/lupa_inactive.svg';
-    let urlActive = '/assets/lupa.svg';
+    const urlInactive = './assets/lupa_inactive.svg';
+    let urlActive = './assets/lupa.svg';
 
-    if (document.body.className == 'night'){
-        urlActive = '/assets/lupa_light.svg';
+    btnBuscar.classList.remove('busqueda-on');
+    btnBuscarText.classList.remove('active-text');
+    btnBuscarImg.src = urlInactive;
+
+    if (localStorage.themeSelected == 'Sailor Night'){
+        urlActive = './assets/lupa_light.svg';
     }
     
     if(inputBuscar.value.length < 3) {
@@ -400,7 +435,40 @@ for(let i = 0; i < 4; i++) {
     }
 }
 
+/*MIS GUIFOS BTN */
+const misguifosSection = document.querySelector('#misguifos');
+const btnMisGuifos = document.querySelector('#btn-misguifos')
 
+window.addEventListener('load', ()=> {
+    sectionBuscador.classList.remove('hidden');
+    tagsSection.classList.remove('hidden');
+    sugerenciasSection.classList.remove('hidden');
+    tendenciasSection.classList.remove('hidden');
+    misguifosSection.classList.add('hidden');
+});
+
+btnMisGuifos.onclick = () => {
+    const localGifs = getMyGifsUrlArray();
+    const container = document.querySelector('#results');
+    document.querySelector('.misguifos').classList.add('opacity');
+    sectionBuscador.classList.add('hidden');
+    tagsSection.classList.add('hidden');
+    sugerenciasSection.classList.add('hidden');
+    tendenciasSection.classList.add('hidden');
+    searchSection.classList.add('hidden');
+    misguifosSection.classList.remove('hidden');
+
+
+    localGifs.forEach(item => {
+        let containerGif = document.createElement('div');
+        containerGif.className = 'archivo-gif miguifo';
+        container.appendChild(containerGif);
+        let gif = document.createElement('img');
+        gif.className = 'gif sinventana';
+        gif.src = item;
+        containerGif.appendChild(gif);
+    });
+}
 
 
 

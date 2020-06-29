@@ -35,7 +35,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="drop-down"><a class="btn misguifos" href="#">Mis guifos</a></li>
+                <li class="drop-down" id="btn-misguifos"><a class="btn misguifos">Mis guifos</a></li>
             </ul>
         </nav>
     </header>
@@ -53,7 +53,7 @@
         </div>
     </section>
 
-    <section class="container tags-buscados">
+    <section class="container tags-buscados" id="tagbuscados">
         
     </section>
 
@@ -120,6 +120,11 @@
         <div class="gifs-container" id="search-container">
 
         </div>
+    </section>
+
+    <section class="container mis-guifos hidden" id="misguifos">
+        <h2 class="separador">Mis guifos:</h2>
+        <div class="gifs-container" id="results"></div>
     </section>
 
     <script src="./scripts/script.js"></script>

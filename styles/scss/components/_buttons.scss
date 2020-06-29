@@ -47,6 +47,9 @@
     background-color: $primary-button-hover-day;
     outline: 1px dotted $primary-font-day;
     outline-offset: -4px;
+    body.night & {
+        background-color: $primary-button-hover-night;
+    }
 }
 
 //DROPDOWN ICON
@@ -115,7 +118,7 @@
         top: 1px;
     }
     &:active {
-        opacity: 80%;
+        opacity: 50%;
     }
 
     body.night & {
@@ -181,7 +184,21 @@
         outline: 1px dotted $primary-font-day;
         outline-offset: -4px;
     }
+
+    body.night & {
+        background-color: $capturando-background;
+        border: $capturando-border;
+        color: $ventana-color-font;
+        box-shadow: $capturando-shadow;
+    
+        &:hover {
+            background-color: $capturando-background;
+            outline: 1px dotted $primary-font-day;
+            outline-offset: -4px;
+        }
+    }
 }
+
 
 //SECONDARY BUTTON
 .secondary {
@@ -202,6 +219,12 @@
         background-color: $secondary-button-background-night;
         border: $secondary-button-border-night;
         box-shadow: $secondary-button-shadow-night;
+        color: $primary-font-night;
+
+        &:hover {
+            outline: 1px dotted $primary-font-night;
+            outline-offset: -4px;
+        }
     }
 }
 

@@ -94,5 +94,18 @@
     text-align: start;
 }
 
+.busqueda-on {
+    background-color: #E6BBE2 ;
+    border: 1px solid #110038;
+    box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+    color: $primary-font-day;
+    outline: 1px dotted $primary-font-day;
+    outline-offset: -4px;
 
+    body.night & {
+        background: #CE36DB;
+        color: $primary-font-night;
+        box-shadow: inset -1px -1px 0 0 #A72CB3, inset 1px 1px 0 0 #FFFFFF;
+    }
+}
 

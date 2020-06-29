@@ -132,6 +132,11 @@
     height: 25px;
     background-color: #B4B4B4;
     box-shadow: inset -2px -2px 0 0 #FFFCFC, inset 2px 2px 0 0 #000000;
+
+    body.night & {
+        border: 1px solid #979797;
+        box-shadow: inset 2px 2px 0 0 #E6E6E6, inset -2px -2px 0 0 #000000;
+    }
     
 }
 
@@ -145,6 +150,10 @@
     width: 12px;
     height: 20px;
     background-color: #F7C9F3;
+
+    body.night & {
+        background-color: #EE3EFE;
+    }
 }
 
 .globeimg {
@@ -241,6 +250,9 @@ video {
 #download {
     text-decoration: none;
     color: $primary-font-day;
+    body.night & {
+        color: $primary-font-night;
+    }
 }
 
 #share-modal-preview {
@@ -268,5 +280,5 @@ video {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }   

@@ -218,8 +218,38 @@ function getMyGifsUrlArray() {
     return items;
 }
 
+function setSailorNightTheme() {
+    document.body.className = 'night';
+    document.querySelector('.logo').src = './assets/gifOF_logo_dark.png';
+
+    localStorage.setItem('themeSelected', 'Sailor Night');
+}
+
 
 /*------------------------------- EVENTS AND FUNCTIONS CALLS -------------------------------*/ 
+/*THEME SELECTED*/
+window.addEventListener('load', () => {
+    
+    if(!localStorage.themeSelected) {
+        localStorage.setItem('themeSelected', 'Sailor Day');
+    } else if(localStorage.themeSelected == 'Sailor Night') {
+        setSailorNightTheme();
+        document.getElementById('camera-button').src = '../assets/camera_light.svg';
+    }
+});
+
+const btnCompuesto = document.querySelector('#video-record-buttons')
+
+btnCompuesto.addEventListener('mouseover', () => {
+    record.classList.add('hover-dropdown');
+    stop.classList.add('hover-dropdown');
+});
+btnCompuesto.addEventListener('mouseout', () => {
+    record.classList.remove('hover-dropdown');
+    stop.classList.remove('hover-dropdown');
+})
+
+
 /*BOTÓN COMENZAR*/
 start.addEventListener('click', () => {
     //cambiamos de modal pre a modal grabacion
