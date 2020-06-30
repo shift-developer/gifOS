@@ -6,6 +6,7 @@ const API_UPLOAD = 'https://upload.giphy.com/v1/gifs';
 
 /*DOM*/
 const start = document.getElementById('permiso-comenzar'); //btn comenzar
+const cancelar = document.getElementById('permiso-cancelar'); //btn cancelar
 const video = document.querySelector('video'); //<video>
 const record = document.getElementById('record'); //btn capturar
 const stop = document.getElementById('stop'); //img btn capturar
@@ -22,6 +23,7 @@ const ventanaCrearGuifos = document.querySelector('#ventana-crearguifos');
 let recorder;
 let recording = false; //para el manejo del timer
 let contador = 0;
+let blobDownloadGif; //para descargar el gif
 
 /*------------------------- GLOBAL FUNCTIONS -------------------------*/ 
 
@@ -111,6 +113,8 @@ function previewAndUpload() {
     //aca obtenemos el blob con la variable global recorder, que ya tiene el gif guardado para la preview
     objectURL = URL.createObjectURL(recorder.getBlob());
     preview.src = objectURL;
+    blobDownloadGif = objectURL;
+    download.href = blobDownloadGif;
 
     //modificamos el DOM para mostrar la preview, remover el timer
     preview.classList.remove('hidden');
@@ -187,7 +191,6 @@ function getGifDetails(id) {
         const copyModal = document.getElementById('copy-success');
         preview.classList.remove('hidden');
 
-        download.href = gifURL;
 
         copy.addEventListener('click', () => {
             navigator.clipboard.writeText(res.data.url);
@@ -221,6 +224,7 @@ function getMyGifsUrlArray() {
 function setSailorNightTheme() {
     document.body.className = 'night';
     document.querySelector('.logo').src = './assets/gifOF_logo_dark.png';
+    document.querySelector("link[rel*='icon']").href = './assets/favicon_night.svg';
 
     localStorage.setItem('themeSelected', 'Sailor Night');
 }
@@ -247,8 +251,12 @@ btnCompuesto.addEventListener('mouseover', () => {
 btnCompuesto.addEventListener('mouseout', () => {
     record.classList.remove('hover-dropdown');
     stop.classList.remove('hover-dropdown');
-})
+});
 
+/*BOTÓN VOLVER AL HOME*/
+document.querySelector('#arrow').addEventListener('click', () => {
+    window.location.replace("./index.html");
+})
 
 /*BOTÓN COMENZAR*/
 start.addEventListener('click', () => {
@@ -260,11 +268,16 @@ start.addEventListener('click', () => {
     streamAndRecord();
 });
 
+/*BOTÓN CANCELAR */
+cancelar.addEventListener('click', () => {
+    window.location.replace("./index.html");
+})
+
 /*BOTÓN REPETIR CAPTURA*/
 restart.addEventListener('click', () => {
     location.reload();
     streamAndRecord();
-})
+});
 
 /*MIS GUIFOS */
 window.addEventListener('load', () => {
@@ -280,7 +293,7 @@ window.addEventListener('load', () => {
         gif.src = item;
         containerGif.appendChild(gif);
     })
-})
+});
 
 getMyGifsUrlArray();
 
@@ -288,6 +301,8 @@ document.getElementById('share-done').addEventListener('click', () => {
     ventanaCrearGuifos.classList.remove('captura-container');
     location.reload();
 });
+
+
 
 
 

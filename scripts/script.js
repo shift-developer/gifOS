@@ -176,7 +176,7 @@ function saveSearch(stringSearch) {
     /*función usada cuando se produce una búsqueda que agrega al storage y HTML, 
     sólo si no se repite el tag*/
 
-    if(!elTagSeRepite(stringSearch)){
+    if(!elTagSeRepite(stringSearch) && localStorage.contador < 9){
         count = localStorage.contador;
         count++;
         localStorage.contador = count;
@@ -263,23 +263,24 @@ function ventanaElegirTema() {
 }
 
 function setSailorDayTheme() {
-    document.body.classList.remove('night');
     document.querySelector('.logo').src = './assets/gifOF_logo.png';
-
+    document.body.classList.remove('night');
+    
     const sailorClass = 'btn themebtn';
     document.querySelector('#sailor-day').className = sailorClass + ' theme-selected';
     document.querySelector('#sailor-night').className = sailorClass + ' gray';
-
+    document.querySelector("link[rel*='icon']").href = './assets/favicon_day.svg';
     localStorage.setItem('themeSelected', 'Sailor Day');
 }
 
 function setSailorNightTheme() {
-    document.body.className = 'night';
     document.querySelector('.logo').src = './assets/gifOF_logo_dark.png';
+    document.body.className = 'night';
 
     const sailorClass = 'btn themebtn';
     document.querySelector('#sailor-day').className = sailorClass + ' gray';
     document.querySelector('#sailor-night').className = sailorClass + ' theme-selected';
+    document.querySelector("link[rel*='icon']").href = './assets/favicon_night.svg';
     localStorage.setItem('themeSelected', 'Sailor Night');
 }
 
@@ -299,7 +300,7 @@ function getMyGifsUrlArray() {
 
 /*------------------------------- EVENTS AND FUNCTIONS CALLS -------------------------------*/ 
 /*NUMBER OF GIFS*/
-let numeroDeGifsSearched = 8; //number of results in search
+let numeroDeGifsSearched = 24; //number of results in search
 let numeroDeTrendingGifs = 24; //number of results in trending
 
 /*SUGGESTED TAGS*/
@@ -373,18 +374,14 @@ inputBuscar.addEventListener('input', (e) => {
         urlActive = './assets/lupa_light.svg';
     }
     
-    if(inputBuscar.value.length < 3) {
+    if(inputBuscar.value.length < 1) {
         ventanaSugerencias.style.display = 'none';
         btnBuscar.className = normalClass;
         btnBuscarText.className = 'normal-text';
         btnBuscarImg.src = urlInactive;
     }
-    
-    if(inputBuscar.value.length >= 3) {
 
-        btnBuscar.className = normalClass + 'active-buscar';
-        btnBuscarText.className = 'active-text';
-        btnBuscarImg.src = urlActive;
+    if(inputBuscar.value.length >= 3) {
 
         getSearchSuggestions(inputBuscar.value).then( (res) => {
             let sug2 = res.data[0].name;
@@ -416,6 +413,13 @@ inputBuscar.addEventListener('input', (e) => {
             };
         });
     }
+
+    if(inputBuscar.value.length > 0){
+        btnBuscar.className = normalClass + 'active-buscar';
+        btnBuscarText.className = 'active-text';
+        btnBuscarImg.src = urlActive;
+    }
+    
 });
 
 
@@ -426,6 +430,12 @@ inputBuscar.addEventListener('keyup', (e) => {
     if(keycode == '13' && stringSearch.lenght > 0){
         ventanaSugerencias.style.display = 'none';
         getSearchGifs(numeroDeGifsSearched, stringSearch);
+    }
+
+    if(keycode == '8' && stringSearch.lenght < 2) {
+        setTimeout( () => {
+            ventanaSugerencias.style.display = 'none';
+        }, 2000);
     }
 
     if(stringSearch < 2) {

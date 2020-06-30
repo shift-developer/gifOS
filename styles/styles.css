@@ -145,8 +145,8 @@ body.night .separador {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   overflow: hidden;
 }
 
@@ -712,9 +712,9 @@ body.night .busqueda-on {
   line-height: 17px;
   left: 1px;
   bottom: 22px;
-  width: 19.61vw;
-  max-width: 282px;
-  min-width: 201.22px;
+  width: 19vw;
+  max-width: 276px;
+  min-width: 200px;
   height: 15px;
   text-align: left;
   text-transform: lowercase;
