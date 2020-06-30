@@ -622,19 +622,38 @@ body.night .busqueda-on {
 
 .gif {
   display: block;
-  height: 280px;
-  width: 280px;
+  height: 19.4714vw;
+  width: 19.4714vw;
+  max-width: 280px;
+  max-height: 280px;
+  min-width: 200px;
+  min-height: 200px;
 }
 
 .sinventana {
-  height: 288px;
-  width: 298px;
+  height: 20.72vw;
+  width: 20.02vw;
+  max-width: 288px;
+  max-height: 298px;
+  min-width: 205px;
+  min-height: 212.17px;
 }
 
 .archivo-gif {
-  height: 288px;
-  width: 298px;
+  height: 20.72vw;
+  width: 20.02vw;
+  max-width: 288px;
+  max-height: 298px;
+  min-width: 205px;
+  min-height: 212.17px;
   margin-bottom: 16px;
+}
+
+.gif-hovered {
+  display: block;
+  margin: auto;
+  width: 99%;
+  height: 99%;
 }
 
 .ventana-title {
@@ -665,6 +684,8 @@ body.night .busqueda-on {
 }
 
 .hover-gifsearch {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   outline: 1px dotted #110038;
   outline-offset: -9px;
   -webkit-box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
@@ -687,7 +708,9 @@ body.night .busqueda-on {
   line-height: 17px;
   left: 1px;
   bottom: 22px;
-  width: 288px;
+  width: 19.61vw;
+  max-width: 282px;
+  min-width: 201.22px;
   height: 15px;
   text-align: left;
   text-transform: lowercase;

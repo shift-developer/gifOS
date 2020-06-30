@@ -121,9 +121,11 @@ function crearHTMLGifs(numeroDeGifs, idContainer, gifClassName) {
         containerGif.appendChild(gif);
         containerGif.onmouseover = () => {
             containerGif.className += ' hover-gifsearch';
+            gif.classList.add('gif-hovered');
         };
         containerGif.onmouseout = () => {
             containerGif.className = 'archivo-gif';
+            gif.classList.remove('gif-hovered');
         };
     }
 }
@@ -267,10 +269,10 @@ let numeroDeTrendingGifs = 8; //number of results in trending
 
 /*SUGGESTED TAGS*/
 const tagsSection = document.querySelector('#tagbuscados')
-let sugTag1 = 'memes';
+let sugTag1 = 'funny';
 let sugTag2 = 'reactions';
 let sugTag3 = 'cat';
-let sugTag4 = 'fails';
+let sugTag4 = 'failure';
 
 /*SUGGESTIONS*/
 const sugerenciasSection = document.querySelector('#sugerencias');
