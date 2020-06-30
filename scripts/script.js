@@ -34,7 +34,7 @@ async function llamarApi(endpoint, nroLimit = '', stringSearch = '', stringTag =
 }
 
 function getSugerenciasGifs(tag1, tag2, tag3, tag4) {
-    const sugerenciasGifs = document.getElementsByClassName('gif sugerencias');
+    const sugerenciasContainer = document.getElementsByClassName('sugerencia-gif');
     const tagGifs = document.getElementsByClassName('tag-gif');
     const buttonsVerMas = document.getElementsByClassName('btn vermas');
 
@@ -44,20 +44,16 @@ function getSugerenciasGifs(tag1, tag2, tag3, tag4) {
             getSearchGifs(numeroDeGifs, arguments[i]);
             inputBuscar.value = arguments[i];
         })
+
+        let gifImg = document.createElement('img');
+        gifImg.className = 'gif sugerencias';
+        sugerenciasContainer[i].prepend(gifImg);
+
+        llamarApi(RANDOM, '', '', arguments[i]).then((res) => {
+            gifImg.src = res.data.images.downsized.url;
+        })
     }
    
-    llamarApi(RANDOM, '', '', tag1).then((res) => {
-        sugerenciasGifs[0].src = res.data.images.downsized.url;
-    })
-    llamarApi(RANDOM, '', '', tag2).then((res) => {
-        sugerenciasGifs[1].src = res.data.images.downsized.url;
-    })
-    llamarApi(RANDOM, '', '', tag3).then((res) => {
-        sugerenciasGifs[2].src = res.data.images.downsized.url;
-    })
-    llamarApi(RANDOM, '', '', tag4).then((res) => {
-        sugerenciasGifs[3].src = res.data.images.downsized.url;
-    })
 }
 
 function getTrendingGifs(numeroDeGifs, idContainer) {
