@@ -46,7 +46,7 @@ function streamAndRecord() {
         record.addEventListener('click', () => {
             recording = !recording;
             document.getElementById('timer').innerHTML = 'Prepárate...'
-            document.getElementById('camera-button').src = '../assets/recording.svg';
+            document.getElementById('camera-button').src = './assets/recording.svg';
 
             if (recording === true) {
                 this.disabled = true; //deshabilitamos el boton record
@@ -234,7 +234,7 @@ window.addEventListener('load', () => {
         localStorage.setItem('themeSelected', 'Sailor Day');
     } else if(localStorage.themeSelected == 'Sailor Night') {
         setSailorNightTheme();
-        document.getElementById('camera-button').src = '../assets/camera_light.svg';
+        document.getElementById('camera-button').src = './assets/camera_light.svg';
     }
 });
 
