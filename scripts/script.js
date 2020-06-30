@@ -199,7 +199,7 @@ function setLocalStorageTags() {
 }
 
 async function getSearchSuggestions(tag) { 
-    const url = 'http://api.giphy.com/v1/tags/related/' + '{' + tag + '}' + API_KEY;
+    const url = 'https://api.giphy.com/v1/tags/related/' + '{' + tag + '}' + API_KEY;
     const datos = await fetch(url);
     const datosJSON = await datos.json();
 
@@ -207,7 +207,7 @@ async function getSearchSuggestions(tag) {
 }
 
 async function getSearchAutocomplete(tag) {
-    const url = 'http://api.giphy.com/v1/gifs/search/tags' + API_KEY + SEARCH_QUERY + tag;
+    const url = 'https://api.giphy.com/v1/gifs/search/tags' + API_KEY + SEARCH_QUERY + tag;
     const datos = await fetch(url);
     const datosJSON = await datos.json();
 
