@@ -41,7 +41,7 @@ function getSugerenciasGifs(tag1, tag2, tag3, tag4) {
     for(let i = 0; i < 4; i++) {
         tagGifs[i].innerHTML = '#' + arguments[i];
         buttonsVerMas[i].addEventListener('click', () => {
-            getSearchGifs(numeroDeGifs, arguments[i]);
+            getSearchGifs(numeroDeGifsSearched, arguments[i]);
             inputBuscar.value = arguments[i];
         })
 
@@ -62,9 +62,22 @@ function getTrendingGifs(numeroDeGifs, idContainer) {
 
     llamarApi(TRENDING, numeroDeGifs).then((res) => {
         for(let i = 0; i < numeroDeGifs; i++){
+            arrDOM[i].src = res.data[i].images.downsized_still.url;
+            let title = res.data[i].title;
+            let titleHash = transformInHashtags(title);
+            let titleSearch = transformInTagSearch(title);
+            arrDOM[i].parentNode.setAttribute('data-content', titleHash);
+
+            arrDOM[i].addEventListener('mouseover', () => {
             arrDOM[i].src = res.data[i].images.downsized.url;
-            let title = transformInHashtags(res.data[i].title);
-            arrDOM[i].parentNode.setAttribute('data-content', title);
+            });
+            arrDOM[i].addEventListener('mouseout', () => {
+                arrDOM[i].src = res.data[i].images.downsized_still.url;
+            });
+            arrDOM[i].addEventListener('click', () => {
+                getSearchGifs(numeroDeGifsSearched, titleSearch);
+                inputBuscar.value = titleSearch;
+            });
         }
     });  
 }
@@ -82,6 +95,11 @@ function getSearchGifs(numeroDeGifs, searchString) {
     
     llamarApi(SEARCH, numeroDeGifs, searchString).then((res) => {
         let nroGifsRecibidos = res.data.length;
+        if(nroGifsRecibidos == 0) {
+            let msgNoResultados = document.createElement('p');
+            msgNoResultados.innerHTML = 'No se han encontrado gifos para tu búsqueda. Prueba con otro tag'
+            gifsContainer.appendChild(msgNoResultados);
+        }
 
         crearHTMLGifs(nroGifsRecibidos, '#search-container', 'search-results');
         const arrDOM = document.getElementsByClassName('gif search-results');
@@ -90,10 +108,22 @@ function getSearchGifs(numeroDeGifs, searchString) {
         separador.innerHTML = searchString + ' (resultados)';
         
         for(let i = 0; i < nroGifsRecibidos; i++){
-            arrDOM[i].src = res.data[i].images.downsized.url;
+            arrDOM[i].src = res.data[i].images.downsized_still.url;
+            let title = res.data[i].title;
+            let titleHash = transformInHashtags(title);
+            let titleSearch = transformInTagSearch(title);
+            arrDOM[i].parentNode.setAttribute('data-content', titleHash);
 
-            let title = transformInHashtags(res.data[i].title);
-            arrDOM[i].parentNode.setAttribute('data-content', title);
+            arrDOM[i].addEventListener('mouseover', () => {
+            arrDOM[i].src = res.data[i].images.downsized.url;
+            });
+            arrDOM[i].addEventListener('mouseout', () => {
+                arrDOM[i].src = res.data[i].images.downsized_still.url;
+            });
+            arrDOM[i].addEventListener('click', () => {
+                getSearchGifs(numeroDeGifsSearched, titleSearch);
+                inputBuscar.value = titleSearch;
+            });
         }
 
         btnBuscar.classList.add('busqueda-on');
@@ -119,14 +149,14 @@ function crearHTMLGifs(numeroDeGifs, idContainer, gifClassName) {
         let gif = document.createElement('img');
         gif.className = 'gif sinventana ' + gifClassName;
         containerGif.appendChild(gif);
-        containerGif.onmouseover = () => {
+        containerGif.addEventListener('mouseover', () => {
             containerGif.className += ' hover-gifsearch';
             gif.classList.add('gif-hovered');
-        };
-        containerGif.onmouseout = () => {
+        });
+        containerGif.addEventListener('mouseout', () => {
             containerGif.className = 'archivo-gif';
             gif.classList.remove('gif-hovered');
-        };
+        });
     }
 }
 
@@ -135,6 +165,11 @@ function transformInHashtags(title) {
     let hashtag = '#';
     string = hashtag + string;
     return string;
+}
+
+function transformInTagSearch(title) {
+    let stringArr = title.split(' ');
+    return stringArr[0] + ' ' + stringArr[1];
 }
 
 function saveSearch(stringSearch) {
@@ -179,7 +214,7 @@ function setTagSearch(searchString) {
     sectionTagsBuscados.appendChild(tagButton);
 
     tagButton.onclick = () => {
-        getSearchGifs(numeroDeGifs, searchString);
+        getSearchGifs(numeroDeGifsSearched, searchString);
         inputBuscar.value = searchString;
         }
     }
@@ -264,15 +299,15 @@ function getMyGifsUrlArray() {
 
 /*------------------------------- EVENTS AND FUNCTIONS CALLS -------------------------------*/ 
 /*NUMBER OF GIFS*/
-let numeroDeGifs = 8; //number of results in search
-let numeroDeTrendingGifs = 8; //number of results in trending
+let numeroDeGifsSearched = 8; //number of results in search
+let numeroDeTrendingGifs = 24; //number of results in trending
 
 /*SUGGESTED TAGS*/
 const tagsSection = document.querySelector('#tagbuscados')
 let sugTag1 = 'funny';
 let sugTag2 = 'reactions';
 let sugTag3 = 'cat';
-let sugTag4 = 'failure';
+let sugTag4 = 'meme';
 
 /*SUGGESTIONS*/
 const sugerenciasSection = document.querySelector('#sugerencias');
@@ -359,13 +394,13 @@ inputBuscar.addEventListener('input', (e) => {
             ventanaSugerencias.style.display = 'block';
 
             resultadosSugeridos[1].onclick = () => {
-                getSearchGifs(numeroDeGifs, sug2);
+                getSearchGifs(numeroDeGifsSearched, sug2);
                 inputBuscar.value = sug2;
                 ventanaSugerencias.style.display = 'none';
                 
             };
             resultadosSugeridos[2].onclick = () => {
-                getSearchGifs(numeroDeGifs, sug3);
+                getSearchGifs(numeroDeGifsSearched, sug3);
                 inputBuscar.value = sug3;
                 ventanaSugerencias.style.display = 'none';
             };
@@ -375,7 +410,7 @@ inputBuscar.addEventListener('input', (e) => {
             let sug1 = res.data[0].name;
             resultadosSugeridos[0].innerHTML = sug1;
             resultadosSugeridos[0].onclick = () => {
-                getSearchGifs(numeroDeGifs, sug1);
+                getSearchGifs(numeroDeGifsSearched, sug1);
                 inputBuscar.value = sug1;
                 ventanaSugerencias.style.display = 'none';
             };
@@ -390,7 +425,7 @@ inputBuscar.addEventListener('keyup', (e) => {
 
     if(keycode == '13' && stringSearch.lenght > 0){
         ventanaSugerencias.style.display = 'none';
-        getSearchGifs(numeroDeGifs, stringSearch);
+        getSearchGifs(numeroDeGifsSearched, stringSearch);
     }
 
     if(stringSearch < 2) {
@@ -406,7 +441,7 @@ btnBuscar.addEventListener('click', () => {
     let stringSearch = inputBuscar.value;
     if(stringSearch.length > 0){
     ventanaSugerencias.style.display = 'none';
-    getSearchGifs(numeroDeGifs, stringSearch);
+    getSearchGifs(numeroDeGifsSearched, stringSearch);
     
     }
 });
