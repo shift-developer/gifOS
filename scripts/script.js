@@ -464,6 +464,8 @@ btnMisGuifos.onclick = () => {
         gif.src = item;
         containerGif.appendChild(gif);
     });
+
+    btnMisGuifos.onclick = () => false;
 }
 
 

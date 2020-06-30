@@ -81,6 +81,11 @@ body.night {
   margin-right: 9.736%;
 }
 
+.bienvenida {
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 12px;
+}
+
 header {
   margin-top: 2.1875rem;
 }
