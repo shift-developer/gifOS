@@ -1,7 +1,7 @@
 /*----------------------------------- CONSTANTS -----------------------------------*/ 
 /*API*/
 const API_KEY = '?api_key=CAllNkSvYhmRBlXwfjBCJcvN3CZJ69w5';
-const API_URL = 'http://api.giphy.com/v1/';
+const API_URL = 'https://api.giphy.com/v1/';
 
 /*ENDPOINTS*/
 const TRENDING = 'gifs/trending';
