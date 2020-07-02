@@ -387,6 +387,7 @@ video {
     @media (max-width: 960px) {
         margin: 0;
         justify-self: center;
+        height: 298px;
     }
 }
 
@@ -396,7 +397,7 @@ video {
 
     @media (max-width: 960px) {
         display: grid;
-        grid-template: 1fr / 1fr;
+        grid-template: auto / 1fr;
     }
 }
 

@@ -841,7 +841,7 @@ body.night .busqueda-on {
     display: block;
     margin: auto;
     width: 99%;
-    height: 99%;
+    height: 298px;
   }
   .sinventana .miguifo {
     margin: 0;
@@ -1438,6 +1438,7 @@ body.night #download {
     margin: 0;
     -ms-grid-column-align: center;
         justify-self: center;
+    height: 298px;
   }
 }
 
@@ -1454,9 +1455,9 @@ body.night #download {
   #results {
     display: -ms-grid;
     display: grid;
-    -ms-grid-rows: 1fr;
+    -ms-grid-rows: auto;
     -ms-grid-columns: 1fr;
-        grid-template: 1fr / 1fr;
+        grid-template: auto / 1fr;
   }
 }
 
