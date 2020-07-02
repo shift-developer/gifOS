@@ -1,8 +1,14 @@
 /*containergif */
 .gifs-container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template: 1fr / 1fr 1fr 1fr 1fr;
+    grid-gap: 16px;
+    grid-auto-flow: dense;
+
+    @media (max-width: 960px) {
+        box-sizing: border-box;
+        grid-template: 1fr / 1fr;
+    }
 }
 
 .gif {
@@ -11,8 +17,15 @@
     width: 19.4714vw;
     max-width: 280px;
     max-height: 280px;
-    min-width: 200px;
-    min-height: 200px;
+    min-width: 250px;
+    min-height: 250px; 
+}
+
+.ventana-gif {
+    width: fit-content;
+    @media (max-width: 960px) {
+        margin: auto;
+    }
 }
 
 .sinventana {
@@ -22,6 +35,19 @@
     max-height: 298px;
     min-width: 205px;
     min-height: 212.17px;
+
+    @media (max-width: 960px) {
+       display: block;
+        margin: auto;
+        width: 99%;
+        height: 99%;
+
+        & .miguifo {
+            margin: 0;
+        }
+    }   
+    
+   
 }
 
 
@@ -32,7 +58,11 @@
     max-height: 298px;
     min-width: 205px;
     min-height: 212.17px;
-    margin-bottom: 16px;
+
+    @media (max-width: 960px) {
+        width: fit-content;
+        margin: auto;
+    }   
 }
 
 .gif-hovered {
@@ -40,6 +70,12 @@
     margin: auto;
     width: 99%;
     height: 99%;
+
+    @media (max-width: 960px) {
+         width: 98%;
+         height: 98.5%;
+         min-height: 100px;
+     }   
     
 }
 
@@ -73,6 +109,7 @@
     box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
     background-color: $ventana-background-day;
     padding: 4px;
+    cursor: pointer;
     &::after {
         content: attr(data-content);
         overflow: hidden;
@@ -93,6 +130,10 @@
         text-align: left;
         text-transform: lowercase;
         padding: 3px 2px;
+
+        @media (max-width: 960px) {
+            width: 96%;
+        }   
     }
 
     body.night & {

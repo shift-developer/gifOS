@@ -71,10 +71,17 @@ function getTrendingGifs(numeroDeGifs, idContainer) {
             arrDOM[i].addEventListener('mouseover', () => {
             arrDOM[i].src = res.data[i].images.downsized.url;
             });
+            arrDOM[i].addEventListener('touchstart', (e) => {
+                arrDOM[i].src = res.data[i].images.downsized.url;
+            });
+            
             arrDOM[i].addEventListener('mouseout', () => {
                 arrDOM[i].src = res.data[i].images.downsized_still.url;
             });
-            arrDOM[i].addEventListener('click', () => {
+            arrDOM[i].addEventListener('touchend', (e) => {
+                arrDOM[i].src = res.data[i].images.downsized.url;
+            });
+            arrDOM[i].addEventListener('dblclick', () => {
                 getSearchGifs(numeroDeGifsSearched, titleSearch);
                 inputBuscar.value = titleSearch;
             });
@@ -117,10 +124,16 @@ function getSearchGifs(numeroDeGifs, searchString) {
             arrDOM[i].addEventListener('mouseover', () => {
             arrDOM[i].src = res.data[i].images.downsized.url;
             });
+            arrDOM[i].addEventListener('touchstart', (e) => {
+                arrDOM[i].src = res.data[i].images.downsized.url;
+            });
             arrDOM[i].addEventListener('mouseout', () => {
                 arrDOM[i].src = res.data[i].images.downsized_still.url;
             });
-            arrDOM[i].addEventListener('click', () => {
+            arrDOM[i].addEventListener('touchend', () => {
+                arrDOM[i].src = res.data[i].images.downsized_still.url;
+            });
+            arrDOM[i].addEventListener('dblclick', () => {
                 getSearchGifs(numeroDeGifsSearched, titleSearch);
                 inputBuscar.value = titleSearch;
             });

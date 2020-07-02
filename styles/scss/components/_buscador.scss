@@ -19,6 +19,10 @@
         color: $primary-font-day;
         caret-color: #4180F6;
     }
+
+    @media (max-width: 960px) {
+        width: 70%;
+    }
 }
 
 .btn-buscar {
@@ -41,6 +45,21 @@
     & span {
         margin-left: 10px;
         line-height: 18px;
+
+        
+    }
+
+    @media (max-width: 960px) {
+        padding: 11px 14px 11px 12px;
+        font-size: 0.75rem;
+        line-height: 1.125rem;
+        margin-left: 4px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+
+        & span {
+            display: none;
+        }
     }
 }
 
@@ -86,6 +105,11 @@
     width: 83.95%;
     box-sizing: border-box;
     max-width: 1343.2px;
+
+    @media (max-width: 960px) {
+        width: 98%;
+        padding: 10px 15px 5px 15px;
+    }
 }
 
 .search-sugerencia{

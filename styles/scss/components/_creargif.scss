@@ -4,11 +4,15 @@
     display: flex;
     justify-content: space-between;
     margin: 30px 93px 28px 25px;
+
+    @media (max-width: 960px) {
+        margin: 10px 10px 10px 10px;
+    }
+    
 }
 
 .permiso-text-container {
     & p {
-        font-family: $font;
         font-size: 14px;
         line-height: 20px;
         width: 518px;
@@ -30,6 +34,26 @@
         font-style: normal;
         margin-right: 3px;
     }
+
+    @media (max-width: 960px) {
+        width: 80%;
+        & p {
+            font-size: 10px;
+            line-height: 16px;
+            width: 90%;
+            margin-bottom: 8px;
+        }
+        & .texttitle {
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 18px;
+            margin-bottom: 5px;
+        }
+        & span {
+            font-weight: 900;
+            font-style: italic;
+        }
+    }
 }
 
 .window-img {
@@ -42,19 +66,39 @@
     display: flex;
     margin: 0px 36px 36px 344px;
     justify-content: space-between;
+
+    @media (max-width: 960px) {
+        margin: 5px 4px 5px 4px;
+        justify-content: flex-end;
+    }
 }
 
 #permiso-cancelar {
     padding: 9px 38.875px 9px 38.875px;
+
+    @media (max-width: 960px) {
+        padding: 9px 20px 9px 20px;
+    }
 }
 
 #permiso-comenzar {
     padding: 9px 34.42px 9px 34.42px;
+
+    @media (max-width: 960px) {
+        padding: 9px 20px 9px 20px;
+        margin-left: 3px;
+    }
 }
 
 //CAPTURA
 .captura-container {
     width: 860px;
+
+    @media (max-width: 960px) {
+        width: 99%;
+        margin: auto;
+        
+    }
 }
 
 .capturar-btn {
@@ -67,6 +111,11 @@
     box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
     margin: 8px 14px 21px 8px;
     height: 440px;
+
+    @media (max-width: 960px) {
+        height: 400px;
+        
+    }
 }
 
 .record-container {
@@ -82,6 +131,10 @@
 .btn-text {
     padding: 9px 39.5px 9px 39.5px;
 
+    @media (max-width: 960px) {
+        padding: 9px 20px 9px 20px;
+
+    }
 }
 
 .btn-img {
@@ -106,14 +159,29 @@
     font-size: 16px;
     color: $primary-font-day;
     line-height: 22px;
+
+    @media (max-width: 960px) {
+        width: 80px;
+        font-size: 12px;
+    }
 }
 
 #restart {
     padding: 9px 13.5px 9px 13.5px;
+
+    @media (max-width: 960px) {
+        padding: 9px 7px 9px 7px;
+        margin-left: 5px;
+    }
 }
 
 #upload {
     padding: 9px 31.5px 9px 31.5px;
+
+    @media (max-width: 960px) {
+        padding: 9px 7px 9px 7px;
+        
+    }
 }
 
 .video-uploadbtn {
@@ -135,7 +203,11 @@
 
     body.night & {
         border: 1px solid #979797;
-        box-shadow: inset 2px 2px 0 0 #E6E6E6, inset -2px -2px 0 0 #000000;
+        box-shadow: inset 2px 2px 0 0 #E6E6E6, inset -2px -2px 0 0 #746262;
+    }
+
+    @media (max-width: 960px) {
+        width: 241.5px;
     }
     
 }
@@ -144,6 +216,9 @@
     width: 12px;
     height: 20px;
     background-color: #999999 ;
+    @media (max-width: 960px) {
+        width: 9px;
+    }
 }
 
 .progress-bar-item-active {
@@ -153,6 +228,10 @@
 
     body.night & {
         background-color: #EE3EFE;
+    }
+
+    @media (max-width: 960px) {
+        width: 9px;
     }
 }
 
@@ -184,12 +263,24 @@ video {
     padding: 2px;
     width: 830px;
     height: 436px;
+
+    @media (max-width: 960px) {
+        width: 98.5%;
+        height: 380px;
+        
+    }
 }
 
 #preview {
     padding: 2px;
     width: 834px;
     height: 436px;
+
+    @media (max-width: 960px) {
+        width: 98.5%;
+        height: 380px;
+        
+    }
 }
 
 .error-msg {
@@ -207,6 +298,13 @@ video {
     margin: 27px 46px 61px 24px;
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 960px) {
+        height: fit-content;
+        flex-direction: column;
+        margin: 5px 2px 3px 2px;
+    }
+
 }
 
 .text-bold {
@@ -223,28 +321,50 @@ video {
     background: #FFFFFF;
     border: 1px solid #979797;
     box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
+
+    @media (max-width: 960px) {
+        width: 98.5%;
+        height: 280px;
+    }
 }
 
 .share-btns {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    align-items: center;
+
+    @media (max-width: 960px) {
+        margin-top: 20px;
+    }
 }
 
 .share-button {
     width: 143px;
     padding: 9px 56.5px 9px 56.5px;
+    margin-bottom: 4px;
     text-align: center;
 }
 
 .share-done {
     margin-right: 46px;
-    display: flex;
-    flex-direction: row-reverse;
+
+    @media (max-width: 960px) {
+        margin: 0;
+    }
 }
 
 #share-done {
     padding: 9px 53.5px 9px 53.5px;
+
+    @media (max-width: 960px) {
+        margin-top: 20px;
+        margin-left: 4px;
+        margin-right: 4px;
+        margin-bottom: 5px;
+        padding: 9px 30px 9px 30px;
+        text-align: center;
+    }
 }
 
 #download {
@@ -263,11 +383,22 @@ video {
 
 .miguifo {
     margin-right: 16px;
+
+    @media (max-width: 960px) {
+        margin-right: 0;
+        margin-bottom: 16px;
+        align-self: center;
+    }
 }
 
 #results {
     display: flex;
     justify-content: start;
+
+    @media (max-width: 960px) {
+        flex-direction: column;
+        align-content: center;
+    }
 }
 
 #copy-success {

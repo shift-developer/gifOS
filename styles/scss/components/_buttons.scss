@@ -8,6 +8,10 @@
     &:focus {
         outline: none;
     }
+
+    @media (max-width: 960px) {
+        font-size: 0.875rem;
+    }
 }
 
 //PRIMARY BUTTON
@@ -34,7 +38,6 @@
     body.night &:hover {
         background-color: $primary-button-hover-night;
     }
-
 
 }
 
@@ -124,6 +127,10 @@
     body.night & {
         color: $primary-font-night;
     }
+
+    @media (max-width: 960px) {
+        display: none;
+    }
 }
 
 //VER MÁS BUTTON
@@ -148,6 +155,12 @@
         border: $vermas-button-border-night;
         box-shadow: $vermas-button-shadow-night;
     }
+
+    @media (max-width: 960px) {
+        font-size: 0.625rem;
+        padding: 6px 7.5px 6px 7.5px;
+        transform: translate(10px, -35px);
+    }
 }
 
 .tag-search {
@@ -169,6 +182,12 @@
         background-color: $vermas-button-background-night;
         border: $vermas-button-border-night;
         box-shadow: $vermas-button-shadow-night;
+    }
+
+    @media (max-width: 960px) {
+        font-size: 0.625rem;
+        padding: 6px 7.5px 6px 7.5px;
+        margin-top: 2px;
     }
 }
 
@@ -227,6 +246,7 @@
         }
     }
 }
+
 
 
 

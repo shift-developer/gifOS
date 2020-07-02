@@ -1,6 +1,11 @@
 html {
     max-width: 1600px;
     margin: auto;
+
+    @media (max-width: 960px) {
+        margin: 0;
+        max-width: none;
+    }
 }
 
 body{
@@ -20,6 +25,7 @@ body{
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
     max-width: 1600px;
+    
 }
 
 .container {
@@ -27,6 +33,12 @@ body{
     box-sizing: border-box;
     margin-left: 6.328%;
     margin-right: 9.736%;
+
+    @media (max-width: 960px) {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
 }
 
 .bienvenida {
@@ -36,10 +48,18 @@ body{
 
 header{
     margin-top: 2.1875rem;
+
+    @media (max-width: 960px) {
+        margin-top: 1rem;
+    }
 }
 
 .buscador {
     margin-top: 38px;
+
+    @media (max-width: 960px) {
+        margin-top: 1rem;
+    }
 }
 
 .ventana{
@@ -81,6 +101,10 @@ header{
     body.night & {
         border: $separador-border-night;    
     }
+
+    @media (max-width: 960px) {
+        margin-top: 40px;
+    }
 }
 
 .tags-buscados {
@@ -96,22 +120,41 @@ header{
 
 .creacion-gif {
     margin-top: 55px;
+
+    @media (max-width: 960px) {
+        margin-top: 10px;
+        box-sizing: border-box;
+    }
 }
 
 .permiso-comenzar {
     width: 684px;
     margin: auto;
+
+    @media (max-width: 960px) {
+        width: 90vw;
+        margin: auto;
+    }
 }
 
 .capturando {
     width: 860px;
     margin: auto;
+
+    @media (max-width: 960px) {
+        width: 99%;
+    }
 }
 
 .share-container {
     width: 721px;
     height: 391px;
     margin: auto;
+
+    @media (max-width: 960px) {
+        width: 90%;
+        height: fit-content;
+    }
 }
 
 p {
