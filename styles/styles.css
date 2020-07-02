@@ -795,13 +795,13 @@ body.night .busqueda-on {
   grid-auto-flow: dense;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 960px) and (max-width: 960px) {
   .gifs-container {
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    -ms-grid-rows: 1fr;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: auto;
     -ms-grid-columns: 1fr;
-        grid-template: 1fr / 1fr;
+        grid-template: auto / 1fr;
   }
 }
 
@@ -841,10 +841,10 @@ body.night .busqueda-on {
     display: block;
     margin: auto;
     width: 99%;
-    height: 298px;
   }
-  .sinventana .miguifo {
+  .miguifo .sinventana {
     margin: 0;
+    height: 298px;
   }
 }
 
