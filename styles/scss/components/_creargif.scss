@@ -265,8 +265,8 @@ video {
     height: 436px;
 
     @media (max-width: 960px) {
-        width: 98.5%;
-        height: 380px;
+        width: 99%;
+        height: 99%;
         
     }
 }
@@ -277,8 +277,8 @@ video {
     height: 436px;
 
     @media (max-width: 960px) {
-        width: 98.5%;
-        height: 380px;
+        width: 99%;
+        height: 99%;
         
     }
 }
@@ -385,9 +385,8 @@ video {
     margin-right: 16px;
 
     @media (max-width: 960px) {
-        margin-right: 0;
-        margin-bottom: 16px;
-        align-self: center;
+        margin: 0;
+        justify-self: center;
     }
 }
 
@@ -396,8 +395,8 @@ video {
     justify-content: start;
 
     @media (max-width: 960px) {
-        flex-direction: column;
-        align-content: center;
+        display: grid;
+        grid-template: 1fr / 1fr;
     }
 }
 

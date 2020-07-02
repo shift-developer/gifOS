@@ -643,9 +643,21 @@ body.night .drop-down:hover {
   caret-color: #4180F6;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 500px) {
   .inputbuscar {
-    width: 70%;
+    width: 78vw;
+  }
+}
+
+@media (max-width: 420px) {
+  .inputbuscar {
+    width: 75vw;
+  }
+}
+
+@media (max-width: 370px) {
+  .inputbuscar {
+    width: 70vw;
   }
 }
 
@@ -1272,8 +1284,8 @@ video {
 
 @media (max-width: 960px) {
   video {
-    width: 98.5%;
-    height: 380px;
+    width: 99%;
+    height: 99%;
   }
 }
 
@@ -1285,8 +1297,8 @@ video {
 
 @media (max-width: 960px) {
   #preview {
-    width: 98.5%;
-    height: 380px;
+    width: 99%;
+    height: 99%;
   }
 }
 
@@ -1423,11 +1435,9 @@ body.night #download {
 
 @media (max-width: 960px) {
   .miguifo {
-    margin-right: 0;
-    margin-bottom: 16px;
-    -ms-flex-item-align: center;
-        -ms-grid-row-align: center;
-        align-self: center;
+    margin: 0;
+    -ms-grid-column-align: center;
+        justify-self: center;
   }
 }
 
@@ -1442,12 +1452,11 @@ body.night #download {
 
 @media (max-width: 960px) {
   #results {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -ms-flex-line-pack: center;
-        align-content: center;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: 1fr;
+    -ms-grid-columns: 1fr;
+        grid-template: 1fr / 1fr;
   }
 }
 
