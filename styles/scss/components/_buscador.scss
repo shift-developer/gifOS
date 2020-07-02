@@ -20,8 +20,16 @@
         caret-color: #4180F6;
     }
 
-    @media (max-width: 960px) {
-        width: 70%;
+    @media (max-width: 500px) {
+        width: 78vw;
+    }
+
+    @media (max-width: 420px) {
+        width: 75vw;
+    }
+
+    @media (max-width: 370px) {
+        width: 70vw;
     }
 }
 
